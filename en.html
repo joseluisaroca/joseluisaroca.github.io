@@ -1,418 +1,348 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>José Luis Aroca Rodríguez — Fullstack Developer Semi Senior</title>
+    <meta
+      name="description"
+      content="Semi Senior Fullstack Developer specializing in NestJS, Next.js, and TypeScript. 10+ years of experience building scalable web solutions."
+    />
+    <meta name="author" content="José Luis Aroca Rodríguez" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://joseluisaroca.github.io/en.html" />
+    <meta
+      property="og:title"
+      content="José Luis Aroca Rodríguez — Fullstack Developer Semi Senior"
+    />
+    <meta
+      property="og:description"
+      content="Semi Senior Fullstack Developer specializing in NestJS, Next.js, and TypeScript."
+    />
 
-    <!-- Primary Meta Tags -->
-    <title>José Luis A. Rodríguez, CV-EN</title>
-    <meta name="title" content="José Luis A. Rodríguez, CV-EN">
-    <meta name="description" content="Web Developer Full Stack">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://joseluisaroca.github.io/en.html">
-    <meta property="og:title" content="José Luis A. Rodríguez, CV-EN">
-    <meta property="og:description" content="Web Developer Full Stack">
-    <meta property="og:image" content="//joseluisaroca.github.io/img/joseleoso.svg">
+    <link rel="icon" type="image/png" href="assets/img/joseleoso.png" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar noprint" aria-label="Main menu">
+      <div class="nav-container">
+        <button
+          class="menu-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu">
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li class="nav-controls">
+            <button
+              id="theme-toggle"
+              aria-label="Toggle theme"
+              title="Toggle theme"
+            >
+              🌙
+            </button>
+            <button
+              id="pdf-download"
+              aria-label="Download PDF"
+              title="Download as PDF"
+            >
+              📄
+            </button>
+            <a href="index.html" class="lang-switch" title="Español">ES</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://joseluisaroca.github.io/en.html">
-    <meta property="twitter:title" content="José Luis A. Rodríguez, CV-EN">
-    <meta property="twitter:description" content="Web Developer Full Stack">
-    <meta property="twitter:image" content="//joseluisaroca.github.io/img/joseleoso.svg">
+    <main class="container">
+      <!-- HEADER -->
+      <header class="cv-header">
+        <h1>José Luis Aroca Rodríguez</h1>
+        <p class="subtitle">
+          Fullstack Developer Semi Senior | NestJS · Next.js · TypeScript
+        </p>
+        <ul class="contact-list">
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Bogotá, Colombia</li>
+          <li>|</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> <a href="tel:+573006178260">+57 (300) 617 8260</a></li>
+          <li>|</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> <a href="mailto:joserodriguez.works@gmail.com">joserodriguez.works@gmail.com</a></li>
+          <li>|</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> <a href="https://www.linkedin.com/in/joseluisaroca/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li>|</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> <a href="https://github.com/joseluisaroca" target="_blank" rel="noopener">GitHub</a></li>
+          <li>|</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189a.455.455 0 00-.867 0L16.418 9.45H7.582L4.918 1.263a.455.455 0 00-.867 0L1.387 9.452.045 13.587a.924.924 0 00.331 1.023L12 23.054l11.624-8.443a.92.92 0 00.331-1.024"/></svg> <a href="https://gitlab.com/joseluisaroca" target="_blank" rel="noopener">GitLab</a></li>
+        </ul>
+      </header>
 
-    <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="assets/img/joseleoso.png">
-    <link href="./assets/css/home.css" rel="stylesheet">
-</head>
+      <!-- PROFILE -->
+      <section id="profile" aria-labelledby="profile-title">
+        <h2 id="profile-title">Professional Profile</h2>
+        <p>
+          Bilingual Fullstack Developer with 10+ years of experience delivering
+          scalable, high-performance web solutions from business requirements to
+          production. Specialized in the Node.js ecosystem (NestJS, Express) and
+          React (Next.js), with deep expertise in REST API design, microservices
+          architecture, and relational/NoSQL database management. Proven
+          technical leadership as Engineering Lead, driving architecture
+          decisions and mentoring teams on complex, high-impact projects.
+        </p>
+      </section>
 
-<body>
-    <div class="container">
-        <header>
-            <div class="exp">
-                <h1 class="text-accent">José Luis A. Rodríguez</h1>
-                <div>Web Developer Full Stack</div>
-                <small class="text-muted">
-                    I have a strong understanding of web development and possess the ability to work in a team in collaborative environments.
-                </small>
-            </div>
-            <div class="titles">
-                <div>
-                    <i class="text-accent far fa-envelope"></i>
-                    <a
-                        href="mailto:joserodriguez.works@gmail.com?subject=I just saw your CV online">joserodriguez.works@gmail.com</a>
-                    <br>
-                </div>
-                <div>
-                    <i class="text-accent fas fa-mobile-alt"></i> (+57) 300 617 8260
-                </div>
-                <div>
-                    <i class="text-accent fab fa-github"></i> <a href="https://github.com/joseluisaroca"
-                        target="_blank">joseluisaroca</a>
-                    <i class="text-accent fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/joseluisaroca/"
-                        target="_blank">joseluisaroca</a><br>
-                </div>
-                <div class="noprint p-t-5">
-                    <span title="Nivel de contraste">
-                        <i class="fas fa-sun" title="Light"></i>
-                        <label class="switch">
-                            <input type="checkbox" id="theme-switch">
-                            <span class="slider round"></span>
-                        </label>
-                        <i class="fas fa-moon" title="Dark"></i>
-                    </span>
-                    <span title="Language">
-                        <i class="fas fa-language"></i> <a href="index.html" class="lang" data-lang="ES" title="Español"
-                            class="print-nolink">ES</a>/EN
-                    </span>
-                </div>
-            </div>
-        </header>
+      <!-- EXPERIENCE -->
+      <section id="experience" aria-labelledby="experience-title">
+        <h2 id="experience-title">Work Experience</h2>
 
-        <main>
-            <!-- EXPERIENCE -->
-            <section class="exp">
+        <article class="job">
+          <div class="job-header">
+            <h3>Fullstack Developer Semi Senior</h3>
+            <span class="job-company">Soho (Chile — Remote)</span>
+            <span class="job-date">January 2025 — Present</span>
+          </div>
+          <ul>
+            <li>
+              Building high-traffic corporate portals with Next.js, optimizing
+              performance through SSR/ISR and reusable module architecture.
+            </li>
+            <li>
+              Designing and developing robust APIs with NestJS for service
+              orchestration, integrating legacy AS400 systems, external
+              providers, and PostgreSQL databases.
+            </li>
+            <li>
+              Implementing security and scalability standards across
+              Node.js-based architectures.
+            </li>
+            <li>
+              Maintaining 80%+ test coverage with Jest (unit and integration),
+              reducing production incidents.
+            </li>
+            <li>
+              Collaborating directly with the design team using Figma and
+              Storybook to ensure Design System consistency.
+            </li>
+          </ul>
+        </article>
 
-                <h2 class="text-center text-accent2">EXPERIENCE</h2>
+        <article class="job">
+          <div class="job-header">
+            <h3>Engineering Lead / Fullstack Developer</h3>
+            <span class="job-company">CPR Servicios y Consultoría</span>
+            <span class="job-date">March 2020 — January 2025</span>
+          </div>
+          <ul>
+            <li>
+              Promoted from Developer to Engineering Lead (2023), owning
+              technical strategy and mentoring junior developers.
+            </li>
+            <li>
+              Architected high-concurrency APIs with Node.js (Express) for mass
+              insurance quoting platforms.
+            </li>
+            <li>
+              Built complex SPAs with Angular and DevExtreme for real-time data
+              visualization dashboards.
+            </li>
+            <li>
+              Administered and optimized MySQL and Firebase Realtime Database
+              instances.
+            </li>
+            <li>
+              Integrated .NET services for automated data processing between
+              APIs and enterprise spreadsheets.
+            </li>
+            <li>
+              Owned technical roadmap and sprint planning under Agile
+              methodologies (Scrum/Kanban).
+            </li>
+          </ul>
+        </article>
 
-                <article>
-                    <h5 class="text-accent4">Software Developer</h5>
-                    <dl>
-                        <dt>Currently, I work as a Deputy Director of Development.</dt>
-                        <dd>· CI/CD in Jenkins.</dd>
-                        <dd>· Code Analysis with Sonar and error monitoring in Sentry.</dd>
-                        <dd>· Maintenance of .NET applications.</dd>
-                        <dd>· Management and development of <strong>REST APIs</strong> with <strong>Node.js</strong> and
-                            <strong>Express framework</strong> in a monolithic architecture.
-                        </dd>
-                        <dd>· Web application development with <strong>Angular 9, 10, and 11</strong> using Devexpress
-                            library, <strong>Socket.io</strong>.</dd>
-                        <dd>· Database management in <strong>MySQL</strong> and NoSQL <strong>Firebase Realtime
-                                Database</strong>.</dd>
-                        <dd>· Projects: <a href="https://cotizadores.e-broker.com.co/" target="_blank">Cotizadores
-                                E-Broker</a>, Cotizador En Red, Mesti - Poliza Mensual</dd>
-                    </dl>
-                    <dl>
-                        <dd><i class="fas fa-calendar"></i> Mar/2020 – Now</dd>
-                        <dd><i class="fas fa-building"></i> <a href="https://e-broker.com.co" target="_blank"
-                                rel="noopener noreferrer">CPR Servicios y Consultoria SAS</a></dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-user"></i> Fernando Ochoa</dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-envelope"></i> <span
-                                class="word-break">fernando.ochoa@e-broker.com.co</span></dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-phone"></i> +57 601 7444120</dd>
-                    </dl>
-                </article>
+        <article class="job">
+          <div class="job-header">
+            <h3>Fullstack Web Developer</h3>
+            <span class="job-company">U2 Software</span>
+            <span class="job-date">April 2019 — August 2019</span>
+          </div>
+          <ul>
+            <li>
+              Fullstack development with PHP/Laravel for e-commerce platforms
+              (TuLlanta and LaRueda), improving user experience and optimizing
+              the checkout flow.
+            </li>
+          </ul>
+        </article>
 
-                <article class="noprint">
-                    <h5 class="text-accent4">Administrator - Owner</h5>
-                    <dl>
-                        <dd>· Website management, as well as handling social media.</dd>
-                        <dd>· Administration of the former physical point of sale, currently online.</dd>
-                    </dl>
-                    <dl>
-                        <dd><i class="fas fa-calendar"></i> Aug/2019 – Now </dd>
-                        <dd><i class="fas fa-building"></i> <a href="https://fantastic3.com.co" target="_blank"
-                                rel="noopener noreferrer">Fantastic 3</a></dd>
-                    </dl>
-                </article>
+        <article class="job">
+          <div class="job-header">
+            <h3>Development Engineer</h3>
+            <span class="job-company">OpenTecnología</span>
+            <span class="job-date">February 2018 — April 2019</span>
+          </div>
+          <ul>
+            <li>
+              Led technical migration from Vanilla PHP to Laravel, standardizing
+              development with OOP patterns and improving code maintainability.
+            </li>
+            <li>
+              Developed Electronic Invoicing module and external API
+              integrations using Angular.
+            </li>
+          </ul>
+        </article>
 
-                <article>
-                    <h5 class="text-accent4">Web Developer</h5>
-                    <dl>
-                        <dd>· Development and maintenance of web applications and REST API services.</dd>
-                        <dd>· Creation of scalable applications.</dd>
-                        <dd>· Maintenance of <strong>PHP</strong> applications with <strong>Laravel Framework</strong>.
-                        </dd>
-                        <dd>· Database management in <strong>MySQL</strong>.</dd>
-                        <dd>· Projects: Tu Llanta, <a href="https://larueda.co" target="_blank">La Rueda<br /><br /></a>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dd><i class="fas fa-calendar"></i> Apr/2019 – Aug/2019</dd>
-                        <dd><i class="fas fa-building"></i> <a href="https://starcommerce.co" target="_blank"
-                                rel="noopener noreferrer">U2 Software</a></dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-user"></i> Andrés Urdaneta</dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-envelope"></i> <span
-                                class="word-break">andresurdaneta@u2.com.co</span></dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-phone"></i> +57 601 6202821</dd>
-                    </dl>
-                </article>
+        <article class="job">
+          <div class="job-header">
+            <h3>Fullstack Developer</h3>
+            <span class="job-company">LinkTIC</span>
+            <span class="job-date">July 2017 — February 2018</span>
+          </div>
+          <ul>
+            <li>SEO-friendly responsive web development and REST API services with CakePHP and MySQL.</li>
+          </ul>
+        </article>
 
-                <article>
-                    <h5 class="text-accent4">Development Engineer</h5>
-                    <dl>
-                        <dd>· Development and maintenance of web applications and REST API services.</dd>
-                        <dd>· Responsible for the development of work modules for the selected applications.</dd>
-                        <dd>· Maintenance of <strong>PHP</strong> applications with <strong>Laravel Framework</strong>.
-                        </dd>
-                        <dd>· Database management in <strong>MySQL</strong>.</dd>
-                    </dl>
-                    <dl>
-                        <dd><i class="fas fa-calendar"></i> Feb/2018 – Apr/2019</dd>
-                        <dd><i class="fas fa-building"></i> <a href="https://open-eb.co" target="_blank"
-                                rel="noopener noreferrer">openTecnologia SA</a></dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-user"></i> Johana Arboleda</dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-envelope"></i> <span
-                                class="word-break">info@openits.co</span></dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-phone"></i> +57 601 2950100</dd>
-                    </dl>
-                </article>
+        <article class="job">
+          <div class="job-header">
+            <h3>Software Developer</h3>
+            <span class="job-company">AnswerING Technologies</span>
+            <span class="job-date">September 2016 — December 2016</span>
+          </div>
+          <ul>
+            <li>Web application development with PHP, MySQL, JavaScript, and API consumption via CURL/XML.</li>
+          </ul>
+        </article>
 
-                <article class="_pbreak">
-                    <h5 class="text-accent4">Web Developer</h5>
-                    <dl>
-                        <dd>· SEO Website layout with responsive design (HTML, CSS, JavaScript, jQuery).</dd>
-                        <dd>· Maintenance of <strong>PHP</strong> applications with <strong>CakePHP</strong>.
-                        </dd>
-                        <dd>· Development and maintenance of web applications and REST API services.</dd>
-                        <dd>· Database management in <strong>MySQL</strong>.</dd>
-                    </dl>
-                    <dl>
-                        <dd><i class="fas fa-calendar"></i> Jul/2017 – Jan/2018 </dd>
-                        <dd><i class="fas fa-building"></i> <a href="https://linktic.com" target="_blank">LinkTIC S.A.S
-                            </a></dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-user"></i> Edgard Pereira </dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-envelope"></i> contacto@linktic.com
-                        </dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-phone"></i> +57 601 6750224 </dd>
-                    </dl>
-                </article>
+        <article class="job">
+          <div class="job-header">
+            <h3>Junior Developer</h3>
+            <span class="job-company">Yonohagofila / BTILab</span>
+            <span class="job-date">April 2014 — January 2016</span>
+          </div>
+          <ul>
+            <li>Hybrid mobile app development with Ionic/Cordova and AngularJS.</li>
+            <li>PHP application maintenance with Symfony2.</li>
+            <li>MySQL database management and inventory system configuration.</li>
+          </ul>
+        </article>
 
-                <article class="noprint">
-                    <h5 class="text-accent4">Web Developer</h5>
-                    <dl>
-                        <dd>· SEO Website layout with responsive design (HTML, CSS, JavaScript, jQuery).</dd>
-                        <dd>· Maintenance of <strong>PHP</strong> applications with <strong>Laravel Framework</strong>.
-                        </dd>
-                        <dd>· Database management in <strong>MySQL</strong>.</dd>
-                        <dd>· Projects: Technical Service, <a href="https://tauretcomputadores.com"
-                                target="_blank">Tauret Computadores</a></dd>
-                    </dl>
-                    <dl>
-                        <dd><i class="fas fa-calendar"></i> Feb/2017 – Jul/2017 </dd>
-                        <dd><i class="fas fa-building"></i> Freelancer</dd>
-                    </dl>
-                </article>
+        <article class="job">
+          <div class="job-header">
+            <h3>Junior Developer</h3>
+            <span class="job-company">Stefanini Colombia</span>
+            <span class="job-date">April 2013 — April 2014</span>
+          </div>
+          <ul>
+            <li>SEO-friendly responsive web development.</li>
+            <li>PHP application maintenance and Oracle database management.</li>
+          </ul>
+        </article>
+      </section>
 
-                <article>
-                    <h5 class="text-accent4">Web Developer</h5>
-                    <dl>
-                        <dd>· SEO Website layout with responsive design (HTML, CSS, JavaScript, jQuery).</dd>
-                        <dd>· Maintenance of <strong>PHP</strong> applications with <strong>Laravel Framework</strong>.
-                        </dd>
-                        <dd>· Development of Web applications, based on HTML, CSS, PHP, MySQL, JavaScript, jQuery, XML,
-                            CURL.</dd>
-                    </dl>
-                    <dl>
-                        <dd><i class="fas fa-calendar"></i> Sep/2016 – Dec/2016 </dd>
-                        <dd><i class="fas fa-building"></i> AnswerING Technologies S.A.S </dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-user"></i> Qohat Pretel Polo</dd>
-                    </dl>
-                </article>
+      <!-- FREELANCE -->
+      <section id="freelance" aria-labelledby="freelance-title" class="noprint">
+        <h2 id="freelance-title">Freelance Projects</h2>
+        <dl class="freelance-grid">
+          <div class="freelance-item">
+            <dt>February 2017 — July 2017</dt>
+            <dd>Responsive website development with PHP/Laravel and MySQL for various clients.</dd>
+          </div>
+          <div class="freelance-item">
+            <dt>July 2016 — September 2016</dt>
+            <dd>Web application development with Laravel and hybrid mobile apps with Ionic/AngularJS.</dd>
+          </div>
+          <div class="freelance-item">
+            <dt>March 2016 — June 2016</dt>
+            <dd>Website development with HTML, CSS, and JavaScript.</dd>
+          </div>
+        </dl>
+      </section>
 
-                <article class="noprint">
-                    <h5 class="text-accent4">Web Developer</h5>
-                    <dl>
-                        <dd>· SEO Website layout with responsive design (HTML, CSS, JavaScript, jQuery).</dd>
-                        <dd>· Maintenance of <strong>PHP</strong> applications with <strong>Laravel Framework</strong>.
-                        </dd>
-                        <dd>
-                            · Development of hybrid mobile applications in <strong>IonicFramework</strong> /
-                            <strong>AngularJS</strong>.
-                        </dd>
-                        <dd>· Database management in <strong>MySQL</strong>.</dd>
-                        <dd>· Projects: Hoteles Colombia, Pan Pa Ya, Criterium - Libidobrand</dd>
-                    </dl>
-                    <dl>
-                        <dd><i class="fas fa-calendar"></i> Mar/2016 – Sep/2016 </dd>
-                        <dd><i class="fas fa-building"></i> Freelancer</dd>
-                    </dl>
-                </article>
+      <!-- SKILLS -->
+      <section id="skills" aria-labelledby="skills-title">
+        <h2 id="skills-title">Technical Skills</h2>
+        <dl class="skills-grid">
+          <div class="skill-group">
+            <dt>Languages</dt>
+            <dd>JavaScript (ES6+), TypeScript, PHP, SQL, HTML5, CSS3</dd>
+          </div>
+          <div class="skill-group">
+            <dt>Backend</dt>
+            <dd>
+              NestJS, Node.js (Express), Laravel, .NET, Microservices, REST API
+            </dd>
+          </div>
+          <div class="skill-group">
+            <dt>Frontend</dt>
+            <dd>
+              Next.js, React (Hooks, Context, Redux), Angular, GraphQL, Jest,
+              Storybook
+            </dd>
+          </div>
+          <div class="skill-group">
+            <dt>Databases</dt>
+            <dd>PostgreSQL, MySQL, SQL Server, Firebase, Oracle</dd>
+          </div>
+          <div class="skill-group">
+            <dt>DevOps & Tools</dt>
+            <dd>
+              Git (GitHub, GitLab, Bitbucket), Docker, CI/CD, Jira, Linux,
+              Vercel, Turborepo
+            </dd>
+          </div>
+        </dl>
+      </section>
 
-                <article>
-                    <h5 class="text-accent4">Junior Developer</h5>
-                    <dl>
-                        <dd>· Development of hybrid mobile applications in <strong>IonicFramework</strong> /
-                            <strong>AngularJS</strong>.
-                        </dd>
-                        <dd>· SPA layout with responsive design in Cordova Apache (HTML, CSS, JavaScript, jQuery).
-                        </dd>
-                        <dd>
-                            · Maintenance of <strong>PHP</strong> applications with <strong>Symfony2</strong> and
-                            <strong>NotORM</strong>.
-                        </dd>
-                        <dd>· Responsible for the operational configuration of the Inventory Application.</dd>
-                        <dd>· Database management in <strong>MySQL</strong>.</dd>
-                        <dd>· Projects: Yonohagofila.com, BTILab, Aplicativo de Inventarios IBC Code Control</dd>
-                    </dl>
-                    <dl>
-                        <dd><i class="fas fa-calendar"></i> Apr/2014 – Jan/2016 </dd>
-                        <dd><i class="fas fa-building"></i> <a href="https://btilab.co" target="_blank"
-                                rel="noopener noreferrer">Yonohagofila.com (Soluciones C2 - BTILab)</a> </dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-user"></i> Juan Pablo C. Mejía
-                        </dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-envelope"></i>
-                            jpablocardona@gmail.com</dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-phone"></i> +57 3204614116</dd>
-                    </dl>
-                </article>
+      <!-- EDUCATION -->
+      <section id="education" aria-labelledby="education-title">
+        <h2 id="education-title">Education</h2>
 
-                <article>
-                    <h5 class="text-accent4">Junior Developer - Level I</h5>
-                    <dl>
-                        <dd>· SEO Website layout with responsive design (HTML, CSS, JavaScript, jQuery).</dd>
-                        <dd>· Maintenance of applications in <strong>PHP</strong> with the company's own framework.</dd>
-                        <dd>· Database management in <strong>Oracle</strong>.</dd>
-                        <dd>· Projects: Personnel Selection Webapp, Telmex Colombia</dd>
-                    </dl>
-                    <dl>
-                        <dd><i class="fas fa-calendar"></i> Apr/2013 – Apr/2014 </dd>
-                        <dd><i class="fas fa-building"></i> Informática y Tecnología Stefanini Colombia</dd>
-                        <dd class="ref-data invisible noprint"><i class="fas fa-user"></i> Marta Elena Segura
-                            Pinzón
-                        </dd>
-                    </dl>
-                </article>
-            </section>
+        <article class="education-item">
+          <h3>Technology in Information Systems Management</h3>
+          <p class="institution">
+            Fundación San José — Expected graduation: 2026
+          </p>
+        </article>
 
+        <article class="education-item">
+          <h3>Continuing Education</h3>
+          <ul>
+            <li>API Architecture and Google Cloud Apigee (In progress)</li>
+            <li>Deployment strategies and DevOps for Node.js environments</li>
+          </ul>
+        </article>
 
-            <!-- SKILLS -->
-            <section class="skills">
-                <h2 class="text-center text-accent2">SKILLS</h2>
-                <h5 class="text-accent4"><i class="fas fa-language text-accent"></i> Languages</h5>
-                <p>
-                    Spanish/Mother language.<br>
-                    English/Intermediate
-                </p>
+        <h3 class="subsection-title">Languages</h3>
+        <ul class="languages-list">
+          <li><strong>Spanish:</strong> Native</li>
+          <li>
+            <strong>English:</strong> B1 — Technical reading and professional
+            communication
+          </li>
+        </ul>
+      </section>
+    </main>
 
-                <h5 class="text-accent4"><i class="fas fa-globe text-accent"></i> Software Developmpent</h5>
-                <p>
-                    Angular, NodeJs, API REST, HTML, XML, CSS, Bootstrap, JavaScript, jQuery, PHP.
-                </p>
+    <footer class="noprint">
+      <p>© 2026 José Luis Aroca Rodríguez</p>
+    </footer>
 
-
-                <h5 class="text-accent4"><i class="fas fa-database text-accent"></i> Database Management</h5>
-                <p>
-                    MySQL, SQLite, SQL Server, Oracle (Básico), Firebase Realtime Database.
-                </p>
-
-
-                <h5 class="text-accent4"><i class="fab fa-trello text-accent"></i> Agile methodologies</h5>
-                <p>
-                    Kanban (with Jira y Trello).
-                </p>
-
-
-                <h5 class="text-accent4"><i class="fas fa-code-branch text-accent"></i> Version control system
-                </h5>
-                <p>
-                    GitHub, Bitbucket, GitLab, Tortoise.
-                </p>
-
-                <h5 class="text-accent4"><i class="fas fa-upload text-accent"></i> CI/CD</h5>
-                <p>
-                    Jenkins (basic management).
-                </p>
-
-                <h5 class="text-accent4"><i class="fas fa-check-double text-accent"></i> Code quality</h5>
-                <p>
-                    Sonarqube (basic management).
-                </p>
-
-                <h5 class="text-accent4"><i class="fas fa-magic text-accent"></i> Design</h5>
-                <p>
-                    Photoshop, GIMP.
-                </p>
-
-
-                <h5 class="text-accent4"><i class="far fa-life-ring text-accent"></i> IT Management</h5>
-                <p>
-                    Maintenance of PC and Videobeams.
-                </p>
-
-
-                <h2 class="text-center text-accent2"> EDUCATION</h2>
-
-                <p>
-                    <strong class="text-accent4">Fundamentals of Software Engineering</strong> (<a
-                        href="https://platzi.com/p/JoseleOso/curso/1098-ingenieria/diploma/detalle/"
-                        target="_blank">See certificate</a>)<br>
-                    <span class="text-muted">
-                        4h, Platzi
-                    </span>
-                </p>
-
-                <p>
-                    <strong class="text-accent4">Introduction to PHP-2017</strong> (<a
-                        href="https://platzi.com/p/JoseleOso/curso/1101-php-2017/diploma/detalle/"
-                        target="_blank">See certificate</a>)<br>
-                    <span class="text-muted">
-                        4h, Platzi
-                    </span>
-                </p>
-
-                <p>
-                    <strong class="text-accent4">Bachelor of Science in Computer Science (Not completed)</strong><br>
-                    <span class="text-muted">
-                        2011 - 2015, Universidad Nacional Abierta y a Distancia - UNAD
-                    </span>
-                </p>
-
-                <p>
-                    <strong class="text-accent4">Professional Technique in Systems Engineering (Not completed)</strong><br>
-                    <span class="text-muted">
-                        2008 - 2011, Fundación de Educación Superior San José
-                    </span>
-                </p>
-
-                <p>
-                    <strong class="text-accent4">
-                        International Seminar "Implementation of the IPv6 Protocol in Colombia"</strong><br>
-                    <span class="text-muted">
-                        8h, SENA: Servicio Nacional de Aprendizaje 
-                    </span>
-                </p>
-
-                <p>
-                    <strong class="text-accent4">Quick Reading Course</strong><br>
-                    <span class="text-muted">
-                        200h, Técnicas Americanas de Estudio para Colombia
-                    </span>
-                </p>
-
-                <p class="noprint">
-                    <strong class="text-accent">Self-taught: HTML, CSS, PHP, JavaScript,
-                        JQuery, Angular, Node Js</strong><br>
-                    <span class="text-muted">
-                        <a target="_blank" href="https://www.udemy.com">Udemy</a><br>
-                        <a target="_blank" href="http://www.w3schools.com">W3 Schools</a><br>
-                        <a target="_blank" href="http://stackoverflow.com">Stackoverflow</a><br>
-                        <a target="_blank" href="http://caniuse.com">Can I use</a><br>
-                    </span>
-                </p>
-
-                <div class="noprint invisible d-lg-block">
-                    <button id="print-button" type="button" class="btn text-accent3" onclick="window.print()"
-                        title='Click here or try "Ctrl + P"'><i class="fas fa-print text-accent3"></i>
-                        Print</button>
-                    <span title="Show/Hide references">
-                        <label class="switch">
-                            <input type="checkbox" id="ref-switch">
-                            <span class="slider round"></span>
-                        </label>
-                        <i class="fas fa-address-book"></i>
-                    </span>
-                </div>
-            </section>
-        </main>
-
-
-        <footer class="noprint"></footer>
-        <script type="text/javascript" src="./assets/js/main.js"></script>
-</body>
-
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>

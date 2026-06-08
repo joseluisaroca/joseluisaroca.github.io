@@ -1,0 +1,534 @@
+/* === VARIABLES === */
+:root,
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text: #1a1a2e;
+  --text-muted: #6c757d;
+  --accent: #036690;
+  --accent-hover: #013d57;
+  --border: #e2e8f0;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --bg-secondary: #1e293b;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #6bbadc;
+  --accent-hover: #42a4cf;
+  --border: #334155;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --nav-bg: rgba(15, 23, 42, 0.95);
+}
+
+/* === RESET === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* === BASE === */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+/* === SCROLL ANIMATIONS === */
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}
+
+/* === NAVBAR === */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+}
+
+.nav-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-menu a {
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nav-menu a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--border);
+}
+
+#theme-toggle,
+#pdf-download {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+#theme-toggle:hover,
+#pdf-download:hover {
+  background: var(--bg-secondary);
+}
+
+.lang-switch {
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: var(--bg-secondary);
+  color: var(--text) !important;
+}
+
+.lang-switch:hover {
+  background: var(--accent);
+  color: #fff !important;
+  text-decoration: none;
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
+}
+
+/* === CONTAINER === */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* === HEADER === */
+.cv-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cv-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.contact-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.contact-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* === SECTIONS === */
+section {
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+/* === JOBS === */
+.job {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.job:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.job-header {
+  margin-bottom: 0.75rem;
+}
+
+.job-header h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.job-company {
+  display: block;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.job-date {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.job ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.job li {
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+
+/* === SKILLS === */
+.skills-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.skill-group {
+  padding: 0.5rem 0;
+}
+
+.skill-group dt {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  color: var(--accent);
+}
+
+.skill-group dd {
+  font-size: 0.9rem;
+}
+
+/* === FREELANCE === */
+.freelance-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.freelance-item {
+  padding: 0.5rem 0;
+}
+
+.freelance-item dt {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin-bottom: 0.15rem;
+}
+
+.freelance-item dd {
+  font-size: 0.9rem;
+}
+
+/* === EDUCATION === */
+.education-item {
+  margin-bottom: 1.25rem;
+}
+
+.education-item h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.institution {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.subsection-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.languages-list {
+  font-size: 0.95rem;
+}
+
+.languages-list li {
+  margin-bottom: 0.25rem;
+}
+
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-container {
+    justify-content: space-between;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--nav-bg);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    box-shadow: var(--shadow);
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .nav-controls {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .cv-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .contact-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .contact-list li:nth-child(even) {
+    display: none;
+  }
+
+  .contact-list li::after {
+    display: none;
+  }
+
+  .container {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* === PRINT === */
+@media print {
+  .noprint {
+    display: none !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.4;
+    color: #000;
+    background: #fff;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .cv-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .cv-header h1 {
+    font-size: 18pt;
+  }
+
+  .contact-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 9pt;
+    gap: 0.25rem 0.4rem;
+  }
+
+  h2 {
+    font-size: 12pt;
+    color: #036690;
+    border-color: #036690;
+    margin-bottom: 0.75rem;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    color: #036690;
+  }
+
+  .job {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    page-break-inside: avoid;
+  }
+
+  .job-header h3 {
+    font-size: 10.5pt;
+  }
+
+  .job li {
+    font-size: 9.5pt;
+  }
+
+  .skill-group {
+    background: none;
+    border: none;
+    padding: 0.25rem 0;
+  }
+
+  .skill-group dt {
+    color: #036690;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #555;
+  }
+
+  .contact-list a[href^="http"]::after {
+    content: none;
+  }
+
+  .icon {
+    display: none;
+  }
+
+  section {
+    margin-bottom: 1.25rem;
+    opacity: 1;
+    transform: none;
+  }
+}
