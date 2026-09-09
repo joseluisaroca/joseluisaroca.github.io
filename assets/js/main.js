@@ -18,9 +18,13 @@
         themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
     });
 
-    // PDF download (triggers print dialog)
+    // PDF download (opens the static CV file matching the current language)
     document.getElementById('pdf-download').addEventListener('click', () => {
-        window.print();
+        const lang = (document.documentElement.lang || 'es').toLowerCase();
+        const file = lang.startsWith('en')
+            ? 'cv-jose-luis-aroca-2026-en.pdf'
+            : 'cv-jose-luis-aroca-2026-es.pdf';
+        window.open('assets/docs/' + file, '_blank');
     });
 
     // Mobile menu toggle
