@@ -1,492 +1,957 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      José Luis Aroca Rodríguez — Fullstack Developer · Node.js · React.js ·
-      TypeScript
-    </title>
-    <meta
-      name="description"
-      content="Fullstack Developer specializing in Node.js, React.js, and TypeScript. 10+ years of experience building scalable web solutions."
-    />
-    <meta name="author" content="José Luis Aroca Rodríguez" />
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>José Luis Aroca Rodríguez — CV</title>
+<meta name="description" content="CV of José Luis Aroca Rodríguez — Fullstack Developer (Node.js, React, TypeScript). +10 years of experience building scalable web solutions.">
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+<style>
+  /* Themeable tokens: defaults reproduce the CV's hardcoded values, so light
+     mode stays byte-for-byte identical. Dark mode overrides the tokens below. */
+  :root {
+    color-scheme: light;
+    --accent-color: hsl(187 74% 32%);
+    --secondary-color: hsl(270, 70%, 45%);
+    --font-family: "Liberation Sans", 'Helvetica Neue', Arial, 'DejaVu Sans', sans-serif;
+    --font-size: 11px;
+    /* Matches generate-pdf.mjs's PDF_PAGE_MARGIN — see the @page rule below. */
+    --page-margin: 0.6in;
+    /* Color tokens (light defaults = original CV values) */
+    --color-bg: #ffffff;
+    --color-text: #1a1a2e;
+    --color-strong: #1a1a1a;
+    --color-summary: #2f2f2f;
+    --color-body: #333;
+    --color-body-2: #444;
+    --color-muted: #555;
+    --color-muted-2: #666;
+    --color-faint: #777;
+    --color-ghost: #888;
+    --color-sep: #ccc;
+    --color-border: #e2e2e2;
+    --accent-text: hsl(187, 74%, 28%);
+    --accent-soft-bg: hsl(187, 40%, 95%);
+    --accent-soft-border: hsl(187, 40%, 88%);
+  }
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://joseluisaroca.github.io/en.html" />
-    <meta
-      property="og:title"
-      content="José Luis Aroca Rodríguez — Fullstack Developer · Node.js · React.js · TypeScript"
-    />
-    <meta
-      property="og:description"
-      content="Fullstack Developer specializing in Node.js, React.js, and TypeScript. 10+ years of experience building scalable web solutions."
-    />
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --accent-color: hsl(187, 74%, 60%);
+    --secondary-color: hsl(270, 70%, 72%);
+    --color-bg: #0f172a;
+    --color-text: #e2e8f0;
+    --color-strong: #f1f5f9;
+    --color-summary: #cbd5e1;
+    --color-body: #cbd5e1;
+    --color-body-2: #cbd5e1;
+    --color-muted: #94a3b8;
+    --color-muted-2: #94a3b8;
+    --color-faint: #8b98ab;
+    --color-ghost: #64748b;
+    --color-sep: #475569;
+    --color-border: #334155;
+    --accent-text: hsl(187, 70%, 66%);
+    --accent-soft-bg: hsl(187, 45%, 16%);
+    --accent-soft-border: hsl(187, 40%, 26%);
+  }
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  @page { margin: var(--page-margin); }
 
-    <link rel="icon" type="image/png" href="assets/img/joseleoso.png" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body>
-    <nav class="navbar noprint" aria-label="Main menu">
-      <div class="nav-container">
-        <button
-          class="menu-toggle"
-          aria-label="Open menu"
-          aria-expanded="false"
-        >
-          <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-menu">
-          <li><a href="#profile">Profile</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#education">Education</a></li>
-          <li class="nav-controls">
-            <button
-              id="theme-toggle"
-              aria-label="Toggle theme"
-              title="Toggle theme"
-            >
-              🌙
-            </button>
-            <button
-              id="pdf-download"
-              aria-label="Download PDF"
-              title="Download as PDF"
-            >
-              📄
-            </button>
-            <a href="index.html" class="lang-switch" title="Español">ES</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+  /* ATS-safe typography: standard static system sans stack, ligatures off so
+     PDF text extractors don't split words. See the original CV notes. */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "clig" 0, "dlig" 0;
+  }
 
-    <main class="container">
-      <!-- HEADER -->
-      <header class="cv-header">
-        <h1>José Luis Aroca Rodríguez</h1>
-        <p class="subtitle">
-          Fullstack Developer · Node.js · React.js · TypeScript
-        </p>
-        <ul class="contact-list">
-          <li>
-            <svg
-              class="icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            Bogotá, Colombia
-          </li>
-          <li>|</li>
-          <li>
-            <svg
-              class="icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"
-              />
-            </svg>
-            <a href="tel:+573006178260">+57 (300) 617 8260</a>
-          </li>
-          <li>|</li>
-          <li>
-            <svg
-              class="icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-              />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-            <a href="mailto:joserodriguez.works@gmail.com"
-              >joserodriguez.works@gmail.com</a
-            >
-          </li>
-          <li>|</li>
-          <li>
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-              />
-            </svg>
-            <a
-              href="https://www.linkedin.com/in/joseluisaroca/"
-              target="_blank"
-              rel="noopener"
-              >LinkedIn</a
-            >
-          </li>
-          <li>|</li>
-          <li>
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-              />
-            </svg>
-            <a
-              href="https://github.com/joseluisaroca"
-              target="_blank"
-              rel="noopener"
-              >GitHub</a
-            >
-          </li>
-          <li>|</li>
-          <li>
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M23.955 13.587l-1.342-4.135-2.664-8.189a.455.455 0 00-.867 0L16.418 9.45H7.582L4.918 1.263a.455.455 0 00-.867 0L1.387 9.452.045 13.587a.924.924 0 00.331 1.023L12 23.054l11.624-8.443a.92.92 0 00.331-1.024"
-              />
-            </svg>
-            <a
-              href="https://gitlab.com/joseluisaroca"
-              target="_blank"
-              rel="noopener"
-              >GitLab</a
-            >
-          </li>
-        </ul>
-      </header>
+  html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
-      <!-- PROFILE -->
-      <section id="profile" aria-labelledby="profile-title">
-        <h2 id="profile-title">Professional Profile</h2>
-        <p>
-          Fullstack Developer with over 10 years of experience building scalable
-          APIs and high-performance web applications using Node.js (NestJS,
-          Express.js) and React (Next.js), with experience integrating legacy
-          AS400 systems, automated testing, and technical leadership.
-        </p>
-      </section>
+  body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-bg);
+    padding: 0;
+    margin: 0;
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "clig" 0, "dlig" 0;
+  }
 
-      <!-- EXPERIENCE -->
-      <section id="experience" aria-labelledby="experience-title">
-        <h2 id="experience-title">Work Experience</h2>
+  .page {
+    width: 100%;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 2px 0;
+  }
 
-        <article class="job">
-          <div class="job-header">
-            <h3>Full Stack Developer</h3>
-            <span class="job-company">Factor IT</span>
-            <span class="job-date">June 2026 — September 2026</span>
-          </div>
-          <ul>
-            <li>
-              Contribute to the development and evolution of a corporate
-              platform using React and Next.js, incorporating modules to improve
-              functionality and user experience.
-            </li>
-            <li>
-              Develop REST APIs with Node.js and NestJS to integrate services,
-              AS400 databases, and external APIs.
-            </li>
-            <li>
-              Centralize critical information while maintaining performance,
-              scalability, and security standards.
-            </li>
-          </ul>
-        </article>
+  /* === FLOATING TOOLBAR (print + dark mode) === */
+  .toolbar {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 6px;
+    padding: 5px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+  }
 
-        <article class="job">
-          <div class="job-header">
-            <h3>Fullstack Developer Semi Senior</h3>
-            <span class="job-company">Soho (Chile — Remote)</span>
-            <span class="job-date">January 2025 — June 2026</span>
-          </div>
-          <ul>
-            <li>
-              Built high-traffic corporate portals with React and Next.js,
-              optimizing performance through SSR/ISR and reusable module
-              architecture.
-            </li>
-            <li>
-              Designed and built REST APIs with Node.js and NestJS to integrate
-              internal services, external APIs, legacy AS400 systems, and
-              PostgreSQL.
-            </li>
-            <li>
-              Implemented security and scalability standards across
-              Node.js-based architectures.
-            </li>
-            <li>
-              Maintained 80%+ test coverage with Jest (unit and integration),
-              reducing production incidents.
-            </li>
-            <li>
-              Collaborated directly with the design team using Figma and
-              Storybook to ensure Design System consistency.
-            </li>
-            <li>Built and styled responsive components with Tailwind CSS.</li>
-          </ul>
-        </article>
+  .toolbar button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+    line-height: 1;
+    color: var(--color-text);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
 
-        <article class="job">
-          <div class="job-header">
-            <h3>Deputy Engineering Lead</h3>
-            <span class="job-company">CPR Servicios y Consultoría</span>
-            <span class="job-date">April 2023 — January 2025</span>
-          </div>
-          <ul>
-            <li>
-              Supported the operational coordination of the development team in
-              the director's absence, tracking objectives, deliverables, and
-              quality standards.
-            </li>
-            <li>
-              Contributed to technical planning, priority definition, and sprint
-              estimation using Agile methodologies (Scrum/Kanban).
-            </li>
-            <li>
-              Mentored junior developers and promoted engineering best practices
-              and continuous improvement.
-            </li>
-          </ul>
-        </article>
+  .toolbar button:hover {
+    background: var(--accent-soft-bg);
+    border-color: var(--accent-soft-border);
+  }
 
-        <article class="job">
-          <div class="job-header">
-            <h3>Software Developer</h3>
-            <span class="job-company">CPR Servicios y Consultoría</span>
-            <span class="job-date">March 2020 — March 2023</span>
-          </div>
-          <ul>
-            <li>
-              Designed and developed scalable REST APIs with Node.js and
-              Express.js for high-volume insurance quoting systems, supporting
-              high concurrency.
-            </li>
-            <li>
-              Implemented middleware, modular routing, and session management
-              with Express.js to improve code maintainability.
-            </li>
-            <li>
-              Built complex SPAs with Angular and DevExtreme for real-time data
-              visualization dashboards.
-            </li>
-            <li>
-              Administered and optimized MySQL and Firebase Realtime Database
-              instances.
-            </li>
-            <li>
-              Integrated .NET services for automated data processing between
-              APIs and enterprise spreadsheets.
-            </li>
-          </ul>
-        </article>
+  .toolbar .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 6px;
+    font-family: var(--font-family);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: background 0.2s, border-color 0.2s;
+  }
 
-        <article class="job">
-          <div class="job-header">
-            <h3>Fullstack Web Developer</h3>
-            <span class="job-company">U2 Software</span>
-            <span class="job-date">April 2019 — August 2019</span>
-          </div>
-          <ul>
-            <li>
-              Fullstack development with PHP/Laravel for e-commerce platforms
-              (TuLlanta and LaRueda), improving user experience and optimizing
-              the checkout flow.
-            </li>
-          </ul>
-        </article>
+  .toolbar .lang-switch:hover {
+    background: var(--accent-soft-bg);
+    border-color: var(--accent-soft-border);
+  }
 
-        <article class="job">
-          <div class="job-header">
-            <h3>Development Engineer</h3>
-            <span class="job-company">OpenTecnología</span>
-            <span class="job-date">February 2018 — April 2019</span>
-          </div>
-          <ul>
-            <li>
-              Led technical migration from Vanilla PHP to Laravel, standardizing
-              development with OOP patterns and improving code maintainability.
-            </li>
-            <li>
-              Developed the Electronic Invoicing module and external API
-              integrations using Angular.
-            </li>
-          </ul>
-        </article>
+  /* === HEADER === */
+  .header {
+    margin-bottom: 20px;
+  }
 
-        <article class="job">
-          <div class="job-header">
-            <h3>Fullstack Developer</h3>
-            <span class="job-company">LinkTIC</span>
-            <span class="job-date">July 2017 — February 2018</span>
-          </div>
-          <ul>
-            <li>
-              SEO-friendly responsive web development and REST API services with
-              CakePHP and MySQL.
-            </li>
-          </ul>
-        </article>
+  .header h1 {
+    font-family: var(--font-family);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
 
-        <article class="job">
-          <div class="job-header">
-            <h3>Software Developer</h3>
-            <span class="job-company">AnswerING Technologies</span>
-            <span class="job-date">September 2016 — December 2016</span>
-          </div>
-          <ul>
-            <li>
-              Web application development with PHP, MySQL, JavaScript, and API
-              consumption via CURL/XML.
-            </li>
-          </ul>
-        </article>
+  .header-gradient {
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+    border-radius: 1px;
+    margin-bottom: 10px;
+  }
 
-        <article class="job">
-          <div class="job-header">
-            <h3>Junior Developer</h3>
-            <span class="job-company">Yonohagofila / Soluciones C2</span>
-            <span class="job-date">April 2014 — January 2016</span>
-          </div>
-          <ul>
-            <li>
-              Hybrid mobile app development with Ionic/Cordova and AngularJS.
-            </li>
-            <li>PHP application maintenance with Symfony2.</li>
-            <li>
-              MySQL database management and inventory system configuration.
-            </li>
-          </ul>
-        </article>
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    font-family: var(--font-family);
+    font-size: 10.5px;
+    line-height: 1.4;
+    color: var(--color-muted);
+  }
 
-        <article class="job">
-          <div class="job-header">
-            <h3>Junior Developer</h3>
-            <span class="job-company">Stefanini Colombia</span>
-            <span class="job-date">April 2013 — April 2014</span>
-          </div>
-          <ul>
-            <li>SEO-friendly responsive web development.</li>
-            <li>PHP application maintenance and Oracle database management.</li>
-          </ul>
-        </article>
-      </section>
+  .contact-row a {
+    color: var(--color-muted);
+    text-decoration: none;
+  }
 
-      <!-- FREELANCE -->
-      <section id="freelance" aria-labelledby="freelance-title" class="noprint">
-        <h2 id="freelance-title">Freelance Projects</h2>
-        <dl class="freelance-grid">
-          <div class="freelance-item">
-            <dt>February 2017 — July 2017</dt>
-            <dd>
-              Responsive website development with PHP/Laravel and MySQL for
-              various clients.
-            </dd>
-          </div>
-          <div class="freelance-item">
-            <dt>July 2016 — September 2016</dt>
-            <dd>
-              Web application development with Laravel and hybrid mobile apps
-              with Ionic/AngularJS.
-            </dd>
-          </div>
-          <div class="freelance-item">
-            <dt>March 2016 — June 2016</dt>
-            <dd>Website development with HTML, CSS, and JavaScript.</dd>
-          </div>
-        </dl>
-      </section>
+  .contact-row .separator {
+    color: var(--color-sep);
+  }
 
-      <!-- SKILLS -->
-      <section id="skills" aria-labelledby="skills-title">
-        <h2 id="skills-title">Technical Skills</h2>
-        <dl class="skills-grid">
-          <div class="skill-group">
-            <dt>Languages</dt>
-            <dd>JavaScript (ES6+), TypeScript, PHP, SQL, HTML5, CSS3</dd>
-          </div>
-          <div class="skill-group">
-            <dt>Backend</dt>
-            <dd>
-              NestJS, Node.js (Express.js), Laravel, .NET, Microservices, REST
-              API
-            </dd>
-          </div>
-          <div class="skill-group">
-            <dt>Frontend</dt>
-            <dd>
-              Next.js, React (Hooks, Context, Redux), Angular, GraphQL, Jest,
-              Storybook, Tailwind CSS
-            </dd>
-          </div>
-          <div class="skill-group">
-            <dt>Databases</dt>
-            <dd>PostgreSQL, MySQL, SQL Server, Firebase, Oracle</dd>
-          </div>
-          <div class="skill-group">
-            <dt>DevOps & Tools</dt>
-            <dd>
-              Git (GitHub, GitLab, Bitbucket), Docker, CI/CD, Jira, Linux,
-              Vercel, Turborepo
-            </dd>
-          </div>
-        </dl>
-      </section>
+  /* === OPTIONAL PROFILE PHOTO === */
+  .cv-photo {
+    float: right;
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    margin: 0 0 8px 14px;
+    border-radius: 3px;
+    border: 1px solid var(--color-border);
+  }
 
-      <!-- EDUCATION -->
-      <section id="education" aria-labelledby="education-title">
-        <h2 id="education-title">Education</h2>
+  .cv-photo--rounded { border-radius: 8px; }
+  .cv-photo--circle { border-radius: 50%; aspect-ratio: 1; height: 80px; }
+  .cv-photo--square { border-radius: 0; aspect-ratio: 1; height: 80px; }
 
-        <article class="education-item">
-          <h3>Technology in Information Systems Management</h3>
-          <p class="institution">
-            Fundación San José — Expected graduation: 2026
-          </p>
-        </article>
+  /* === SECTIONS === */
+  .section {
+    margin-bottom: 18px;
+  }
 
-        <article class="education-item">
-          <h3>Studies in Systems Engineering</h3>
-          <p class="institution">UNAD Colombia — 2011 – 2015</p>
-        </article>
+  .section-title {
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-color);
+    border-bottom: 1.5px solid var(--color-border);
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
 
-        <article class="education-item">
-          <h3>Continuing Education</h3>
-          <ul>
-            <li>API Architecture and Google Cloud Apigee (In progress)</li>
-            <li>Deployment strategies and DevOps for Node.js environments</li>
-          </ul>
-        </article>
+  /* === PROFESSIONAL SUMMARY === */
+  .summary-text {
+    font-size: var(--font-size);
+    line-height: 1.7;
+    color: var(--color-summary);
+  }
 
-        <h3 class="subsection-title">Languages</h3>
-        <ul class="languages-list">
-          <li><strong>Spanish:</strong> Native</li>
-          <li>
-            <strong>English:</strong> B1 — Full reading comprehension; speaking
-            actively developing toward B2
-          </li>
-        </ul>
-      </section>
-    </main>
+  .summary-text strong {
+    font-weight: 700;
+    color: var(--color-strong);
+  }
 
-    <footer class="noprint">
-      <p>© 2026 José Luis Aroca Rodríguez</p>
-    </footer>
+  /* Links must never break across lines */
+  a {
+    white-space: nowrap;
+  }
 
-    <script src="assets/js/main.js"></script>
-  </body>
+  /* === CORE COMPETENCIES === */
+  .competencies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .competency-tag {
+    font-family: var(--font-family);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--accent-text);
+    background: var(--accent-soft-bg);
+    padding: 4px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--accent-soft-border);
+  }
+
+  /* === WORK EXPERIENCE === */
+  .job {
+    margin-bottom: 14px;
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .job-company {
+    font-family: var(--font-family);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--secondary-color);
+  }
+
+  .job-period {
+    font-size: 10.5px;
+    color: var(--color-faint);
+    white-space: nowrap;
+  }
+
+  .job-role {
+    font-size: var(--font-size);
+    font-weight: 600;
+    color: var(--color-body);
+    margin-bottom: 6px;
+  }
+
+  .job-location {
+    font-size: 10px;
+    color: var(--color-ghost);
+  }
+
+  .job ul {
+    padding-left: 18px;
+    margin-top: 6px;
+  }
+
+  .job li {
+    font-size: 10.5px;
+    line-height: 1.6;
+    color: var(--color-body);
+    margin-bottom: 4px;
+  }
+
+  .job li strong {
+    font-weight: 600;
+  }
+
+  /* === PROJECTS === */
+  .project {
+    margin-bottom: 12px;
+  }
+
+  .project-title {
+    font-family: var(--font-family);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--secondary-color);
+  }
+
+  .project-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .project-title a:hover {
+    text-decoration: underline;
+  }
+
+  .project-badge {
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--accent-color);
+    background: var(--accent-soft-bg);
+    padding: 1px 6px;
+    border-radius: 2px;
+    margin-left: 6px;
+  }
+
+  .project-desc {
+    font-size: 10.5px;
+    color: var(--color-body-2);
+    margin-top: 3px;
+    line-height: 1.55;
+  }
+
+  .project-tech {
+    font-size: 9.5px;
+    color: var(--color-ghost);
+    margin-top: 3px;
+  }
+
+  /* === EDUCATION === */
+  .edu-item {
+    margin-bottom: 8px;
+  }
+
+  .edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .edu-title {
+    font-weight: 600;
+    font-size: var(--font-size);
+    color: var(--color-body);
+  }
+
+  .edu-org {
+    color: var(--secondary-color);
+    font-weight: 500;
+  }
+
+  .edu-year {
+    font-size: 10px;
+    color: var(--color-faint);
+    white-space: nowrap;
+  }
+
+  .edu-location {
+    font-size: 10px;
+    color: var(--color-ghost);
+  }
+
+  .edu-desc {
+    font-size: 10px;
+    color: var(--color-muted-2);
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+
+  /* === CERTIFICATIONS === */
+  .cert-table {
+    display: table;
+    width: 100%;
+  }
+
+  .cert-item {
+    display: table-row;
+  }
+
+  .cert-item > * {
+    display: table-cell;
+    vertical-align: baseline;
+    padding-bottom: 6px;
+  }
+
+  .cert-title {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--color-body);
+  }
+
+  .cert-org {
+    color: var(--secondary-color);
+    white-space: nowrap;
+  }
+
+  .cert-year {
+    font-size: 10px;
+    color: var(--color-faint);
+    white-space: nowrap;
+    text-align: right;
+    width: 44px;
+  }
+
+  /* === AWARDS === */
+  .award-table {
+    display: table;
+    width: 100%;
+  }
+
+  .award-item {
+    display: table-row;
+  }
+
+  .award-item > * {
+    display: table-cell;
+    vertical-align: baseline;
+    padding-bottom: 6px;
+  }
+
+  .award-title {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--color-body);
+  }
+
+  .award-org {
+    color: var(--secondary-color);
+    white-space: nowrap;
+  }
+
+  .award-year {
+    font-size: 10px;
+    color: var(--color-faint);
+    white-space: nowrap;
+    text-align: right;
+    width: 44px;
+  }
+
+  /* === INTERESTS === */
+  .interests-line {
+    font-size: 10.5px;
+    color: var(--color-body-2);
+  }
+
+  /* === SKILLS === */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+
+  .skill-item {
+    font-size: 10.5px;
+    color: var(--color-body-2);
+  }
+
+  .skill-category {
+    font-weight: 600;
+    color: var(--color-body);
+    font-size: 10.5px;
+  }
+
+  /* === PRINT === */
+  @media print {
+    body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Hide the toolbar and any other .noprint elements when printing/saving PDF */
+    .toolbar,
+    .noprint {
+      display: none !important;
+    }
+
+    /* Keep a small right gutter for the print box. */
+    .page {
+      padding: 0 0.18in 0 0;
+    }
+  }
+
+  /* === PAGE BREAK CONTROL === */
+  .header,
+  .edu-item,
+  .cert-item,
+  .competency-tag,
+  .skill-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .section-title,
+  .job-company,
+  .job-role,
+  .job-location,
+  .edu-location,
+  .project-title {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .project-tech {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  /* === RTL (Arabic) Support === */
+  html[lang="ar"] body {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+  }
+
+  html[lang="ar"] .header h1,
+  html[lang="ar"] .section-title,
+  html[lang="ar"] .job-company,
+  html[lang="ar"] .project-title,
+  html[lang="ar"] .competency-tag,
+  html[lang="ar"] .skill-category {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+  }
+
+  html[lang="ar"] .header-gradient {
+    background: linear-gradient(to left, var(--accent-color), var(--secondary-color));
+  }
+
+  html[lang="ar"] .job ul {
+    padding-right: 18px;
+    padding-left: 0;
+  }
+
+  html[lang="ar"] .project-badge {
+    margin-right: 6px;
+    margin-left: 0;
+  }
+
+  html[lang="ar"] .cert-year {
+    text-align: left;
+  }
+
+  html[lang="ar"] .cert-table {
+    direction: rtl;
+  }
+
+  html[lang="ar"] .cv-photo {
+    float: left;
+    margin: 0 14px 8px 0;
+  }
+
+  /* === CJK (Japanese) font fallback === */
+  html[lang="ja"] body {
+    font-family: var(--font-family), 'Hiragino Sans',
+      'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'YuGothic', 'Noto Sans CJK JP',
+      'Noto Sans JP', Meiryo, 'MS PGothic', sans-serif;
+  }
+
+  html[lang="ja"] .header h1,
+  html[lang="ja"] .section-title,
+  html[lang="ja"] .job-company,
+  html[lang="ja"] .project-title,
+  html[lang="ja"] .competency-tag,
+  html[lang="ja"] .skill-category {
+   font-family: var(--font-family), 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+      'Yu Gothic', 'YuGothic', 'Noto Sans CJK JP', 'Noto Sans JP',
+      Meiryo, 'MS PGothic', sans-serif;
+  }
+
+  /* === Simplified Chinese typography === */
+  html[lang="zh-CN"] body,
+  html[lang="zh"] body {
+    font-family: var(--font-family), 'PingFang SC',
+      'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC',
+      'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    line-break: strict;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  html[lang="zh-CN"] .header h1,
+  html[lang="zh-CN"] .section-title,
+  html[lang="zh-CN"] .job-company,
+  html[lang="zh-CN"] .project-title,
+  html[lang="zh-CN"] .contact-row,
+  html[lang="zh-CN"] .competency-tag,
+  html[lang="zh-CN"] .skill-category,
+  html[lang="zh"] .header h1,
+  html[lang="zh"] .section-title,
+  html[lang="zh"] .job-company,
+  html[lang="zh"] .project-title,
+  html[lang="zh"] .contact-row,
+  html[lang="zh"] .competency-tag,
+  html[lang="zh"] .skill-category {
+    font-family: var(--font-family), 'PingFang SC',
+      'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC',
+      'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  }
+
+  /* === Korean typography === */
+  html[lang="ko"] body {
+    font-family: var(--font-family), 'Apple SD Gothic Neo',
+      'Malgun Gothic', 'Noto Sans CJK KR',
+      'Noto Sans KR', 'Nanum Gothic', sans-serif;
+    line-break: strict;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  html[lang="ko"] .header h1,
+  html[lang="ko"] .section-title,
+  html[lang="ko"] .job-company,
+  html[lang="ko"] .project-title,
+  html[lang="ko"] .contact-row,
+  html[lang="ko"] .competency-tag,
+  html[lang="ko"] .skill-category {
+    font-family: var(--font-family), 'Apple SD Gothic Neo',
+      'Malgun Gothic', 'Noto Sans CJK KR',
+      'Noto Sans KR', 'Nanum Gothic', sans-serif;
+  }
+
+  /* === Traditional Chinese typography === */
+  html[lang="zh-TW"] body {
+    font-family: var(--font-family), 'PingFang TC',
+      'Microsoft JhengHei', 'Noto Sans CJK TC',
+      'Noto Sans TC', 'Source Han Sans TC', sans-serif;
+    line-break: strict;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  html[lang="zh-TW"] .header h1,
+  html[lang="zh-TW"] .section-title,
+  html[lang="zh-TW"] .job-company,
+  html[lang="zh-TW"] .project-title,
+  html[lang="zh-TW"] .contact-row,
+  html[lang="zh-TW"] .competency-tag,
+  html[lang="zh-TW"] .skill-category {
+    font-family: var(--font-family), 'PingFang TC',
+      'Microsoft JhengHei', 'Noto Sans CJK TC',
+      'Noto Sans TC', 'Source Han Sans TC', sans-serif;
+  }
+
+  html[lang="zh-CN"] .summary-text,
+  html[lang="zh"] .summary-text,
+  html[lang="zh-CN"] .job li,
+  html[lang="zh"] .job li {
+    line-height: 1.7;
+  }
+
+  html[lang="zh-CN"] .section-title,
+  html[lang="zh"] .section-title {
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+<body>
+<div class="toolbar noprint" role="toolbar" aria-label="Controls">
+  <button id="print-btn" type="button" title="Download PDF" aria-label="Download PDF">
+    🖨️
+  </button>
+  <button id="theme-toggle" type="button" title="Toggle theme" aria-label="Toggle theme">
+    🌙
+  </button>
+  <a class="lang-switch" href="index.html" title="Español" aria-label="Switch to Spanish">ES</a>
+</div>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>José Luis Aroca Rodríguez</h1>
+    <div class="header-gradient"></div>
+    <div class="contact-row">
+      <a href="tel:+57(300)6178260">+57 (300) 617 8260</a>
+      <span class="separator">|</span>
+      <a href="mailto:joserodriguez.works@gmail.com">joserodriguez.works@gmail.com</a>
+      <span class="separator">|</span>
+      <a href="https://www.linkedin.com/in/joseluisaroca/">linkedin.com/in/joseluisaroca</a>
+      <span class="separator">|</span>
+      <a href="https://github.com/joseluisaroca">github.com/joseluisaroca</a>
+      <span class="separator">|</span>
+      <a href="https://joseluisaroca.github.io/">joseluisaroca.github.io</a>
+      <span class="separator">|</span>
+      <span>Bogotá, Colombia</span>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="section">
+    <div class="section-title">Professional Summary</div>
+    <div class="summary-text">Fullstack Developer with 10+ years building scalable APIs and high-performance web applications. Specialized in <strong>NestJS</strong>, <strong>Express.js</strong> and <strong>React (Next.js)</strong>, with achievements in legacy system integration (AS400), 80%+ test coverage, and technical leadership as Deputy Director of Development. Proven record in remote cross-border teams with a modern Docker, CI/CD, TypeScript and Tailwind stack.</div>
+  </div>
+
+  <!-- CORE COMPETENCIES -->
+  <div class="section">
+    <div class="section-title">Core Competencies</div>
+    <div class="competencies-grid">
+      <span class="competency-tag">NestJS / Express.js API Architecture</span>
+      <span class="competency-tag">TypeScript End-to-End</span>
+      <span class="competency-tag">Next.js SSR/ISR</span>
+      <span class="competency-tag">Legacy Integration (AS400, .NET)</span>
+      <span class="competency-tag">PostgreSQL / MySQL / Firebase</span>
+      <span class="competency-tag">Docker + CI/CD</span>
+      <span class="competency-tag">Tailwind CSS + Design Systems</span>
+      <span class="competency-tag">Scrum / Kanban Leadership</span>
+    </div>
+  </div>
+
+  <!-- WORK EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Work Experience</div>
+    <div class="job">
+  <div class="job-header">
+    <span class="job-company">Factor IT</span>
+    <span class="job-period">June 2026 - September 2026</span>
+  </div>
+  <div class="job-role">Full Stack Developer</div>
+  <div class="job-location">Bogotá, Colombia</div>
+  <ul>
+    <li>Develop and evolve a corporate platform with <strong>React</strong> and <strong>Next.js</strong>, adding modules that improve functionality and user experience.</li>
+    <li>Build REST APIs with <strong>Node.js</strong> and <strong>NestJS</strong> to integrate services, <strong>AS400</strong> databases, and external APIs.</li>
+    <li>Contribute to centralizing critical information while maintaining performance, scalability, and security standards.</li>
+  </ul>
+</div>
+  <div class="job">
+  <div class="job-header">
+    <span class="job-company">Soho (Chile, Remote)</span>
+    <span class="job-period">January 2025 - June 2026</span>
+  </div>
+  <div class="job-role">Fullstack Developer Semi Senior</div>
+  <div class="job-location">Chile - Remote</div>
+  <ul>
+    <li>Built high-traffic corporate portals with <strong>Next.js</strong>, optimizing performance via <strong>SSR/ISR</strong> and reusable module architecture.</li>
+    <li>Designed and built <strong>NestJS</strong> APIs for service orchestration, integrating legacy <strong>AS400</strong> systems, external providers, and <strong>PostgreSQL</strong>.</li>
+    <li>Maintained 80%+ Jest coverage (unit + integration), reducing production incidents.</li>
+    <li>Collaborated with design (Figma, <strong>Storybook</strong>) and built responsive UI with <strong>Tailwind CSS</strong>; enforced security and scalability standards on Node.js.</li>
+  </ul>
+</div>
+  <div class="job">
+  <div class="job-header">
+    <span class="job-company">CPR Servicios y Consultoría</span>
+    <span class="job-period">April 2023 - January 2025</span>
+  </div>
+  <div class="job-role">Deputy Director of Development</div>
+  
+  <ul>
+    <li>Coordinated team operations, technical planning, priorities, and sprint estimation under <strong>Agile (Scrum/Kanban)</strong>.</li>
+    <li>Mentored junior developers and promoted engineering best practices and continuous improvement.</li>
+  </ul>
+</div>
+  <div class="job">
+  <div class="job-header">
+    <span class="job-company">CPR Servicios y Consultoría</span>
+    <span class="job-period">March 2020 - March 2023</span>
+  </div>
+  <div class="job-role">Software Developer</div>
+  
+  <ul>
+    <li>Designed and developed scalable REST APIs with <strong>Node.js</strong> and <strong>Express.js</strong> for high-concurrency mass insurance quoting.</li>
+    <li>Built complex SPAs with <strong>Angular</strong> and DevExtreme for real-time data visualization.</li>
+    <li>Administered and optimized <strong>MySQL</strong> and <strong>Firebase Realtime Database</strong>; integrated <strong>.NET</strong> services for automated data processing.</li>
+  </ul>
+</div>
+  <div class="job">
+  <div class="job-header">
+    <span class="job-company">U2 Software</span>
+    <span class="job-period">April 2019 - August 2019</span>
+  </div>
+  <div class="job-role">Fullstack Web Developer</div>
+  
+  <ul>
+    <li>Fullstack development with PHP/Laravel for e-commerce platforms (TuLlanta and LaRueda).</li>
+  </ul>
+</div>
+  <div class="job">
+  <div class="job-header">
+    <span class="job-company">OpenTecnología</span>
+    <span class="job-period">February 2018 - April 2019</span>
+  </div>
+  <div class="job-role">Development Engineer</div>
+  
+  <ul>
+    <li>Led migration from Vanilla PHP to Laravel and developed the Electronic Invoicing module with Angular.</li>
+  </ul>
+</div>
+  <div class="job">
+  <div class="job-header">
+    <span class="job-company">LinkTIC</span>
+    <span class="job-period">July 2017 - February 2018</span>
+  </div>
+  <div class="job-role">Fullstack Developer</div>
+  
+  <ul>
+    <li>Built SEO-responsive websites, REST services with CakePHP, and managed MySQL.</li>
+  </ul>
+</div>
+  <div class="job">
+  <div class="job-header">
+    <span class="job-company">AnswerING Technologies</span>
+    <span class="job-period">September 2016 - December 2016</span>
+  </div>
+  <div class="job-role">Software Developer</div>
+  
+  <ul>
+    <li>Web application development with PHP, MySQL, JavaScript, and API consumption.</li>
+  </ul>
+</div>
+  <div class="job">
+  <div class="job-header">
+    <span class="job-company">Yonohagofila / Soluciones C2</span>
+    <span class="job-period">April 2014 - January 2016</span>
+  </div>
+  <div class="job-role">Junior Developer</div>
+  
+  <ul>
+    <li>Hybrid mobile apps with <strong>Ionic/Cordova</strong>, PHP maintenance with Symfony2, and MySQL.</li>
+  </ul>
+</div>
+  <div class="job">
+  <div class="job-header">
+    <span class="job-company">Stefanini Colombia</span>
+    <span class="job-period">April 2013 - April 2014</span>
+  </div>
+  <div class="job-role">Junior Developer</div>
+  
+  <ul>
+    <li>Responsive web layout and PHP maintenance with Oracle.</li>
+  </ul>
+</div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+    <div class="project">
+  <div class="project-title"><a href="https://github.com/joseluisaroca">Online Store</a><span class="project-badge">Personal</span></div>
+  <div class="project-desc">Full-stack e-commerce project demonstrating modern-stack fluency: NestJS backend with JWT and PostgreSQL, Next.js 16 frontend with MUI and Tailwind.</div>
+  <div class="project-tech">NestJS 11, TypeORM, PostgreSQL, JWT, Next.js 16, MUI, Tailwind</div>
+</div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-item">
+  <div class="edu-header">
+    <div class="edu-title">Technology in Information Systems Management <span class="edu-org">Fundación San José</span></div>
+    <div class="edu-year">Expected: 2026</div>
+  </div>
+  
+  
+</div>
+  <div class="edu-item">
+  <div class="edu-header">
+    <div class="edu-title">Systems Engineering Studies <span class="edu-org">Universidad Nacional Abierta y a Distancia (UNAD)</span></div>
+    <div class="edu-year">2011 - 2015</div>
+  </div>
+  
+  
+</div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    <div class="cert-table"><div class="cert-item">
+  <span class="cert-title">API Architecture and Google Cloud Apigee</span>
+  <span class="cert-org"></span>
+  <span class="cert-year">In progress</span>
+</div>
+    <div class="cert-item">
+  <span class="cert-title">Deployment Strategies and DevOps for Node.js</span>
+  <span class="cert-org"></span>
+  <span class="cert-year">In progress</span>
+</div></div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <div class="skills-grid">
+<div class="skill-item"><span class="skill-category">Languages: </span>JavaScript (ES6+), TypeScript, PHP, SQL, HTML5, CSS3</div>
+<div class="skill-item"><span class="skill-category">Backend: </span>NestJS, Node.js (Express.js), Laravel, .NET, Microservices, REST API</div>
+<div class="skill-item"><span class="skill-category">Frontend: </span>Next.js, React, Angular, GraphQL, Jest, Storybook, Tailwind CSS</div>
+<div class="skill-item"><span class="skill-category">Databases: </span>PostgreSQL, MySQL, SQL Server, Firebase, Oracle</div>
+<div class="skill-item"><span class="skill-category">DevOps &amp; Tools: </span>Git, Docker, CI/CD, Jira, Linux, Vercel, Turborepo</div>
+  </div>
+  </div>
+
+  <!-- END -->
+
+</div>
+<script>
+  (() => {
+    const root = document.documentElement;
+
+    // Theme toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    const syncIcon = () => {
+      themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+    };
+    syncIcon();
+
+    themeBtn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      root.style.colorScheme = next;
+      localStorage.setItem('theme', next);
+      syncIcon();
+    });
+
+    // Print / Save as PDF
+    document.getElementById('print-btn').addEventListener('click', () =>
+      window.open('assets/docs/cv-jose-luis-aroca-en-2026.pdf', '_blank'));
+  })();
+</script>
+</body>
 </html>

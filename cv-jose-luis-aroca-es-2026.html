@@ -1,78 +1,45 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>José Luis Aroca Rodríguez — CV</title>
-<meta name="description" content="CV de José Luis Aroca Rodríguez — Desarrollador Fullstack (Node.js, React, TypeScript). +10 años de experiencia en soluciones web escalables.">
-<script>
-  // Apply theme before paint to avoid a flash of the wrong theme.
-  (function () {
-    try {
-      var t = localStorage.getItem('theme');
-      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', t);
-    } catch (e) {}
-  })();
-</script>
 <style>
-  /* Themeable tokens: defaults reproduce the CV's hardcoded values, so light
-     mode stays byte-for-byte identical. Dark mode overrides the tokens below. */
+  /* Themeable tokens (#1837): overridable via config/profile.yml `style:`, which
+     the PDF pipeline injects as a later :root block. Defaults below reproduce the
+     original hardcoded values, so a profile without a `style:` block is unchanged. */
   :root {
-    color-scheme: light;
     --accent-color: hsl(187 74% 32%);
     --secondary-color: hsl(270, 70%, 45%);
     --font-family: "Liberation Sans", 'Helvetica Neue', Arial, 'DejaVu Sans', sans-serif;
     --font-size: 11px;
-    /* Matches generate-pdf.mjs's PDF_PAGE_MARGIN — see the @page rule below. */
+    /* Matches generate-pdf.mjs's PDF_PAGE_MARGIN — the actual PDF page margin
+       comes from the later @page rule injectPrintPageCss appends (which reads
+       this same variable), so this default must match it exactly. */
     --page-margin: 0.6in;
-    /* Color tokens (light defaults = original CV values) */
-    --color-bg: #ffffff;
-    --color-text: #1a1a2e;
-    --color-strong: #1a1a1a;
-    --color-summary: #2f2f2f;
-    --color-body: #333;
-    --color-body-2: #444;
-    --color-muted: #555;
-    --color-muted-2: #666;
-    --color-faint: #777;
-    --color-ghost: #888;
-    --color-sep: #ccc;
-    --color-border: #e2e2e2;
-    --accent-text: hsl(187, 74%, 28%);
-    --accent-soft-bg: hsl(187, 40%, 95%);
-    --accent-soft-border: hsl(187, 40%, 88%);
   }
-
-  [data-theme="dark"] {
-    color-scheme: dark;
-    --accent-color: hsl(187, 74%, 60%);
-    --secondary-color: hsl(270, 70%, 72%);
-    --color-bg: #0f172a;
-    --color-text: #e2e8f0;
-    --color-strong: #f1f5f9;
-    --color-summary: #cbd5e1;
-    --color-body: #cbd5e1;
-    --color-body-2: #cbd5e1;
-    --color-muted: #94a3b8;
-    --color-muted-2: #94a3b8;
-    --color-faint: #8b98ab;
-    --color-ghost: #64748b;
-    --color-sep: #475569;
-    --color-border: #334155;
-    --accent-text: hsl(187, 70%, 66%);
-    --accent-soft-bg: hsl(187, 45%, 16%);
-    --accent-soft-border: hsl(187, 40%, 26%);
-  }
-
   @page { margin: var(--page-margin); }
 
-  /* ATS-safe typography: standard static system sans stack, ligatures off so
-     PDF text extractors don't split words. See the original CV notes. */
+  /* ATS-safe typography (#font-extraction fix):
+     The bundled variable woff2 fonts (Space Grotesk / DM Sans) render with
+     glyph advances that make PDF text extractors inject spurious spaces inside
+     words (e.g. "SUM M ARY", "Germ any") — which corrupts ATS keyword parsing.
+     This template's job is clean machine-readable parsing, so we use a standard
+     static system sans stack instead. Verified clean via pypdf text extraction.
+     The lang="ja" rules reuse this Latin base stack (with a CJK fallback added);
+     the lang="ar" rules below intentionally define their own Arabic stack. */
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Disable fi/fl/ffi ligatures. Headless Chromium substitutes these letter
+       pairs with the Unicode glyphs U+FB01/FB02/FB03 at PDF layout time, and PDF
+       text extractors (what ATS systems read) decode them back to those
+       codepoints, so "verification" becomes "veriﬁcation" and a literal keyword
+       search misses it. Setting this on every element covers headings and
+       competency tags too. Required ligatures (rlig) stay on, so Arabic shaping
+       is unaffected. */
     font-variant-ligatures: none;
     font-feature-settings: "liga" 0, "clig" 0, "dlig" 0;
   }
@@ -86,10 +53,11 @@
     font-family: var(--font-family);
     font-size: var(--font-size);
     line-height: 1.5;
-    color: var(--color-text);
-    background: var(--color-bg);
+    color: #1a1a2e;
+    background: #ffffff;
     padding: 0;
     margin: 0;
+    /* Disable ligatures here as well; see the * rule above. */
     font-variant-ligatures: none;
     font-feature-settings: "liga" 0, "clig" 0, "dlig" 0;
   }
@@ -101,64 +69,6 @@
     padding: 2px 0;
   }
 
-  /* === FLOATING TOOLBAR (print + dark mode) === */
-  .toolbar {
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    display: flex;
-    gap: 6px;
-    padding: 5px;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    z-index: 1000;
-  }
-
-  .toolbar button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    font-size: 17px;
-    line-height: 1;
-    color: var(--color-text);
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s, border-color 0.2s;
-  }
-
-  .toolbar button:hover {
-    background: var(--accent-soft-bg);
-    border-color: var(--accent-soft-border);
-  }
-
-  .toolbar .lang-switch {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 36px;
-    height: 36px;
-    padding: 0 6px;
-    font-family: var(--font-family);
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--color-text);
-    text-decoration: none;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    transition: background 0.2s, border-color 0.2s;
-  }
-
-  .toolbar .lang-switch:hover {
-    background: var(--accent-soft-bg);
-    border-color: var(--accent-soft-border);
-  }
-
   /* === HEADER === */
   .header {
     margin-bottom: 20px;
@@ -168,7 +78,7 @@
     font-family: var(--font-family);
     font-size: 28px;
     font-weight: 700;
-    color: var(--color-text);
+    color: #1a1a2e;
     letter-spacing: -0.02em;
     margin-bottom: 6px;
     line-height: 1.1;
@@ -188,19 +98,24 @@
     font-family: var(--font-family);
     font-size: 10.5px;
     line-height: 1.4;
-    color: var(--color-muted);
+    color: #555;
   }
 
   .contact-row a {
-    color: var(--color-muted);
+    color: #555;
     text-decoration: none;
   }
 
   .contact-row .separator {
-    color: var(--color-sep);
+    color: #ccc;
   }
 
-  /* === OPTIONAL PROFILE PHOTO === */
+  /* === OPTIONAL PROFILE PHOTO (opt-in, DACH/European markets — #264) ===
+     Off by default: with no candidate.photo the  slot is empty, no
+     <img> is emitted, and the layout is byte-identical to a photoless CV.
+     When opted in (candidate.photo in config/profile.yml) the photo floats into
+     the top corner and the header/summary text wraps beside it. Photos are
+     penalized by US/UK/many-market ATS, so this is never on by default. */
   .cv-photo {
     float: right;
     width: 80px;
@@ -208,7 +123,7 @@
     object-fit: cover;
     margin: 0 0 8px 14px;
     border-radius: 3px;
-    border: 1px solid var(--color-border);
+    border: 1px solid #e2e2e2;
   }
 
   .cv-photo--rounded { border-radius: 8px; }
@@ -227,7 +142,7 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--accent-color);
-    border-bottom: 1.5px solid var(--color-border);
+    border-bottom: 1.5px solid #e2e2e2;
     padding-bottom: 4px;
     margin-bottom: 10px;
     line-height: 1.2;
@@ -237,12 +152,12 @@
   .summary-text {
     font-size: var(--font-size);
     line-height: 1.7;
-    color: var(--color-summary);
+    color: #2f2f2f;
   }
 
   .summary-text strong {
     font-weight: 700;
-    color: var(--color-strong);
+    color: #1a1a1a;
   }
 
   /* Links must never break across lines */
@@ -261,11 +176,11 @@
     font-family: var(--font-family);
     font-size: 10px;
     font-weight: 500;
-    color: var(--accent-text);
-    background: var(--accent-soft-bg);
+    color: hsl(187, 74%, 28%);
+    background: hsl(187, 40%, 95%);
     padding: 4px 10px;
     border-radius: 3px;
-    border: 1px solid var(--accent-soft-border);
+    border: 1px solid hsl(187, 40%, 88%);
   }
 
   /* === WORK EXPERIENCE === */
@@ -290,20 +205,20 @@
 
   .job-period {
     font-size: 10.5px;
-    color: var(--color-faint);
+    color: #777;
     white-space: nowrap;
   }
 
   .job-role {
     font-size: var(--font-size);
     font-weight: 600;
-    color: var(--color-body);
+    color: #333;
     margin-bottom: 6px;
   }
 
   .job-location {
     font-size: 10px;
-    color: var(--color-ghost);
+    color: #888;
   }
 
   .job ul {
@@ -314,7 +229,7 @@
   .job li {
     font-size: 10.5px;
     line-height: 1.6;
-    color: var(--color-body);
+    color: #333;
     margin-bottom: 4px;
   }
 
@@ -347,7 +262,7 @@
     font-size: 9px;
     font-weight: 500;
     color: var(--accent-color);
-    background: var(--accent-soft-bg);
+    background: hsl(187, 40%, 95%);
     padding: 1px 6px;
     border-radius: 2px;
     margin-left: 6px;
@@ -355,14 +270,14 @@
 
   .project-desc {
     font-size: 10.5px;
-    color: var(--color-body-2);
+    color: #444;
     margin-top: 3px;
     line-height: 1.55;
   }
 
   .project-tech {
     font-size: 9.5px;
-    color: var(--color-ghost);
+    color: #888;
     margin-top: 3px;
   }
 
@@ -381,7 +296,7 @@
   .edu-title {
     font-weight: 600;
     font-size: var(--font-size);
-    color: var(--color-body);
+    color: #333;
   }
 
   .edu-org {
@@ -391,18 +306,18 @@
 
   .edu-year {
     font-size: 10px;
-    color: var(--color-faint);
+    color: #777;
     white-space: nowrap;
   }
 
   .edu-location {
     font-size: 10px;
-    color: var(--color-ghost);
+    color: #888;
   }
 
   .edu-desc {
     font-size: 10px;
-    color: var(--color-muted-2);
+    color: #666;
     margin-top: 2px;
     line-height: 1.5;
   }
@@ -426,7 +341,7 @@
   .cert-title {
     font-size: 10.5px;
     font-weight: 500;
-    color: var(--color-body);
+    color: #333;
   }
 
   .cert-org {
@@ -436,13 +351,16 @@
 
   .cert-year {
     font-size: 10px;
-    color: var(--color-faint);
+    color: #777;
     white-space: nowrap;
     text-align: right;
     width: 44px;
   }
 
   /* === AWARDS === */
+  /* Same table model as certifications (title / issuer / year on one baseline),
+     under its own class names so a template pack can restyle awards without
+     dragging certifications along. */
   .award-table {
     display: table;
     width: 100%;
@@ -461,7 +379,7 @@
   .award-title {
     font-size: 10.5px;
     font-weight: 500;
-    color: var(--color-body);
+    color: #333;
   }
 
   .award-org {
@@ -471,7 +389,7 @@
 
   .award-year {
     font-size: 10px;
-    color: var(--color-faint);
+    color: #777;
     white-space: nowrap;
     text-align: right;
     width: 44px;
@@ -480,7 +398,7 @@
   /* === INTERESTS === */
   .interests-line {
     font-size: 10.5px;
-    color: var(--color-body-2);
+    color: #444;
   }
 
   /* === SKILLS === */
@@ -492,12 +410,12 @@
 
   .skill-item {
     font-size: 10.5px;
-    color: var(--color-body-2);
+    color: #444;
   }
 
   .skill-category {
     font-weight: 600;
-    color: var(--color-body);
+    color: #333;
     font-size: 10.5px;
   }
 
@@ -508,19 +426,23 @@
       print-color-adjust: exact;
     }
 
-    /* Hide the toolbar and any other .noprint elements when printing/saving PDF */
-    .toolbar,
-    .noprint {
-      display: none !important;
-    }
-
-    /* Keep a small right gutter for the print box. */
+    /* Keep a small right gutter for the print box. Right-aligned content
+       (job periods, education years) right-aligns to the content-box edge,
+       and the rightmost glyph's side bearing can spill ~1px past it and get
+       clipped by Chromium's print clip. A plain `.page` padding is reset to 0
+       here for print, which is why padding set outside @media print has no
+       effect; restoring a right gutter inside the print rule fixes it without
+       re-centering the page or hard-coding a per-format max-width. See #1341. */
     .page {
       padding: 0 0.18in 0 0;
     }
   }
 
   /* === PAGE BREAK CONTROL === */
+  /* Only avoid breaking small atomic units (a cert row, an education line, the
+     header, a single competency or skill).  Sections and multi-bullet roles are
+     allowed to flow across a page boundary so content packs tight instead of
+     jumping wholesale and leaving large bottom gaps. */
   .header,
   .edu-item,
   .cert-item,
@@ -530,6 +452,8 @@
     page-break-inside: avoid;
   }
 
+  /* Keep a heading attached to the content that follows it, so headings are not
+     orphaned at the bottom of a page. */
   .section-title,
   .job-company,
   .job-role,
@@ -540,6 +464,10 @@
     page-break-after: avoid;
   }
 
+  /* Keep a project's tech line attached to the description above it.  A project
+     may still split across pages, but not at the one opportunity that strands a
+     bare "Python | github.com/..." line at the top of the next page with no
+     title or description to identify it. */
   .project-tech {
     break-before: avoid;
     page-break-before: avoid;
@@ -589,6 +517,12 @@
   }
 
   /* === CJK (Japanese) font fallback === */
+  /* The bundled webfonts are Latin-only (see #951). Without a CJK fallback,
+     Japanese text renders as tofu (□) in headless Chromium on any system
+     without a CJK system font (Linux/CI, minimal containers). The Latin brand
+     fonts are kept first so ASCII still uses Space Grotesk / DM Sans, then the
+     browser's per-glyph fallback picks the first installed CJK face for kana
+     and kanji. Mirrors the lang="ar" precedent above. */
   html[lang="ja"] body {
     font-family: var(--font-family), 'Hiragino Sans',
       'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'YuGothic', 'Noto Sans CJK JP',
@@ -606,7 +540,11 @@
       Meiryo, 'MS PGothic', sans-serif;
   }
 
-  /* === Simplified Chinese typography === */
+  /* === Simplified Chinese typography ===
+     Keep Latin-capable system fonts first for stable ATS extraction, then use
+     platform-native and open-source Simplified Chinese faces for Han glyphs.
+     Explicit line-breaking prevents mixed Chinese/English tokens and Chinese
+     punctuation from producing clipped or awkward PDF lines. */
   html[lang="zh-CN"] body,
   html[lang="zh"] body {
     font-family: var(--font-family), 'PingFang SC',
@@ -636,7 +574,12 @@
       'Noto Sans SC', 'Source Han Sans SC', sans-serif;
   }
 
-  /* === Korean typography === */
+  /* === Korean typography ===
+     modes/ko/ ships as a supported locale, but no rule matched html[lang="ko"],
+     so a Korean CV fell back to the Latin-only stack and Hangul rendered via
+     whatever the PDF engine happened to substitute. Same shape as the ja and
+     zh blocks above: Latin-capable faces first for stable ATS extraction, then
+     platform-native and open-source Korean faces for Hangul glyphs. */
   html[lang="ko"] body {
     font-family: var(--font-family), 'Apple SD Gothic Neo',
       'Malgun Gothic', 'Noto Sans CJK KR',
@@ -658,7 +601,16 @@
       'Noto Sans KR', 'Nanum Gothic', sans-serif;
   }
 
-  /* === Traditional Chinese typography === */
+  /* === Traditional Chinese typography ===
+     modes/zh-TW/ ships as a supported locale. html[lang="zh"] does not match
+     lang="zh-TW", so it needs its own rule — and it must use TC faces, not the
+     Simplified stack above, which substitutes the wrong glyph forms.
+     var(--font-family) leads (profile override / Latin :root default), then the
+     TC faces sit in the font list itself — NOT in var()'s fallback slot, which
+     is dead because :root always defines --font-family. Same shape as
+     templates/ats/cv-template.ats.html. (The ja/zh-CN/ko blocks above still use
+     the older `var(--font-family, …)` form and have the same dead-slot bug —
+     out of scope here, tracked separately.) */
   html[lang="zh-TW"] body {
     font-family: var(--font-family), 'PingFang TC',
       'Microsoft JhengHei', 'Noto Sans CJK TC',
@@ -694,17 +646,9 @@
 </style>
 </head>
 <body>
-<div class="toolbar noprint" role="toolbar" aria-label="Controles">
-  <button id="print-btn" type="button" title="Descargar PDF" aria-label="Descargar PDF">
-    🖨️
-  </button>
-  <button id="theme-toggle" type="button" title="Cambiar tema" aria-label="Cambiar tema">
-    🌙
-  </button>
-  <a class="lang-switch" href="en.html" title="English" aria-label="Switch to English">EN</a>
-</div>
 <div class="page">
 
+  
   <!-- HEADER -->
   <div class="header">
     <h1>José Luis Aroca Rodríguez</h1>
@@ -727,7 +671,7 @@
   <!-- PROFESSIONAL SUMMARY -->
   <div class="section">
     <div class="section-title">Perfil profesional</div>
-    <div class="summary-text">Desarrollador Fullstack con más de 10 años construyendo APIs escalables y aplicaciones web de alto rendimiento. Especialista en <strong>NestJS</strong>, <strong>Express.js</strong> y <strong>React (Next.js)</strong>, con logros en integración de sistemas legados (AS400), cobertura de pruebas superior al 80% y liderazgo técnico como Subdirector de Desarrollo. Experiencia en equipos remotos cross-border y stack moderno con Docker, CI/CD, TypeScript y Tailwind CSS.</div>
+    <div class="summary-text">Desarrollador Fullstack con más de 10 años construyendo APIs escalables y aplicaciones web de alto rendimiento. Especialista en **NestJS**, **Express.js** y **React (Next.js)**, con logros en integración de sistemas legados (AS400), cobertura de pruebas superior al 80% y liderazgo técnico como Subdirector de Desarrollo. Experiencia en equipos remotos cross-border y stack moderno con Docker, CI/CD, TypeScript y Tailwind CSS.</div>
   </div>
 
   <!-- CORE COMPETENCIES -->
@@ -756,8 +700,8 @@
   <div class="job-role">Programador Full Stack</div>
   <div class="job-location">Bogotá, Colombia</div>
   <ul>
-    <li>Desarrollo y evolución de una plataforma corporativa con <strong>React</strong> y <strong>Next.js</strong>, incorporando módulos que mejoran la funcionalidad y la experiencia de usuario.</li>
-    <li>Desarrollo de APIs REST con <strong>Node.js</strong> y <strong>NestJS</strong> para integrar servicios, bases de datos <strong>AS400</strong> y APIs externas.</li>
+    <li>Desarrollo y evolución de una plataforma corporativa con **React** y **Next.js**, incorporando módulos que mejoran la funcionalidad y la experiencia de usuario.</li>
+    <li>Desarrollo de APIs REST con **Node.js** y **NestJS** para integrar servicios, bases de datos **AS400** y APIs externas.</li>
     <li>Contribución a la centralización de información crítica manteniendo estándares de rendimiento, escalabilidad y seguridad.</li>
   </ul>
 </div>
@@ -769,10 +713,10 @@
   <div class="job-role">Fullstack Developer Semi Senior</div>
   <div class="job-location">Chile - Remoto</div>
   <ul>
-    <li>Desarrollo de portales corporativos de alto tráfico con <strong>Next.js</strong>, optimizando el rendimiento mediante <strong>SSR/ISR</strong> y arquitectura de módulos reutilizables.</li>
-    <li>Diseño y construcción de APIs con <strong>NestJS</strong> para orquestación de servicios, con integración exitosa a sistemas legados <strong>AS400</strong>, proveedores externos y <strong>PostgreSQL</strong>.</li>
-    <li>Cobertura de pruebas unitarias e integración con <strong>Jest superior al 80%</strong>, reduciendo incidencias en producción.</li>
-    <li>Colaboración con diseño (Figma, <strong>Storybook</strong>) y maquetación responsiva con <strong>Tailwind CSS</strong>; estándares de seguridad y escalabilidad en Node.js.</li>
+    <li>Desarrollo de portales corporativos de alto tráfico con **Next.js**, optimizando el rendimiento mediante **SSR/ISR** y arquitectura de módulos reutilizables.</li>
+    <li>Diseño y construcción de APIs con **NestJS** para orquestación de servicios, con integración exitosa a sistemas legados **AS400**, proveedores externos y **PostgreSQL**.</li>
+    <li>Cobertura de pruebas unitarias e integración con **Jest superior al 80%**, reduciendo incidencias en producción.</li>
+    <li>Colaboración con diseño (Figma, **Storybook**) y maquetación responsiva con **Tailwind CSS**; estándares de seguridad y escalabilidad en Node.js.</li>
   </ul>
 </div>
   <div class="job">
@@ -783,7 +727,7 @@
   <div class="job-role">Subdirector de Desarrollo</div>
   
   <ul>
-    <li>Coordinación operativa del equipo, planificación técnica, definición de prioridades y estimación de sprints bajo metodologías <strong>Agile (Scrum/Kanban)</strong>.</li>
+    <li>Coordinación operativa del equipo, planificación técnica, definición de prioridades y estimación de sprints bajo metodologías **Agile (Scrum/Kanban)**.</li>
     <li>Mentoría de desarrolladores junior y promoción de buenas prácticas de ingeniería y mejora continua.</li>
   </ul>
 </div>
@@ -795,9 +739,9 @@
   <div class="job-role">Programador de Software</div>
   
   <ul>
-    <li>Diseño y desarrollo de APIs REST escalables con <strong>Node.js</strong> y <strong>Express.js</strong> para cotizadores masivos de seguros, soportando alta concurrencia.</li>
-    <li>Desarrollo de SPAs complejas con <strong>Angular</strong> y DevExtreme para visualización de datos en tiempo real.</li>
-    <li>Administración y optimización de bases de datos <strong>MySQL</strong> y <strong>Firebase Realtime Database</strong>; integración de servicios <strong>.NET</strong> para el procesamiento de datos.</li>
+    <li>Diseño y desarrollo de APIs REST escalables con **Node.js** y **Express.js** para cotizadores masivos de seguros, soportando alta concurrencia.</li>
+    <li>Desarrollo de SPAs complejas con **Angular** y DevExtreme para visualización de datos en tiempo real.</li>
+    <li>Administración y optimización de bases de datos **MySQL** y **Firebase Realtime Database**; integración de servicios **.NET** para el procesamiento de datos.</li>
   </ul>
 </div>
   <div class="job">
@@ -852,7 +796,7 @@
   <div class="job-role">Desarrollador Junior</div>
   
   <ul>
-    <li>Aplicativos móviles híbridos con <strong>Ionic/Cordova</strong>, mantenimiento PHP con Symfony2 y MySQL.</li>
+    <li>Aplicativos móviles híbridos con **Ionic/Cordova**, mantenimiento PHP con Symfony2 y MySQL.</li>
   </ul>
 </div>
   <div class="job">
@@ -929,29 +873,5 @@
   <!-- END -->
 
 </div>
-<script>
-  (() => {
-    const root = document.documentElement;
-
-    // Theme toggle
-    const themeBtn = document.getElementById('theme-toggle');
-    const syncIcon = () => {
-      themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
-    };
-    syncIcon();
-
-    themeBtn.addEventListener('click', () => {
-      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      root.style.colorScheme = next;
-      localStorage.setItem('theme', next);
-      syncIcon();
-    });
-
-    // Print / Save as PDF
-    document.getElementById('print-btn').addEventListener('click', () =>
-      window.open('assets/docs/cv-jose-luis-aroca-es-2026.pdf', '_blank'));
-  })();
-</script>
 </body>
 </html>
