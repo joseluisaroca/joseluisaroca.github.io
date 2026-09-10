@@ -23,7 +23,7 @@
     --accent-color: hsl(187 74% 32%);
     --secondary-color: hsl(270, 70%, 45%);
     --font-family: "Liberation Sans", 'Helvetica Neue', Arial, 'DejaVu Sans', sans-serif;
-    --font-size: 11px;
+    --font-size: 16px;
     /* Matches generate-pdf.mjs's PDF_PAGE_MARGIN — see the @page rule below. */
     --page-margin: 0.6in;
     /* Color tokens (light defaults = original CV values) */
@@ -96,7 +96,7 @@
 
   .page {
     width: 100%;
-    max-width: 210mm;
+    max-width: 960px;
     margin: 0 auto;
     padding: 2px 0;
   }
@@ -145,7 +145,7 @@
     height: 36px;
     padding: 0 6px;
     font-family: var(--font-family);
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--color-text);
     text-decoration: none;
@@ -161,16 +161,16 @@
 
   /* === HEADER === */
   .header {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   .header h1 {
     font-family: var(--font-family);
-    font-size: 28px;
+    font-size: 40px;
     font-weight: 700;
     color: var(--color-text);
     letter-spacing: -0.02em;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
     line-height: 1.1;
   }
 
@@ -178,16 +178,16 @@
     height: 2px;
     background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
     border-radius: 1px;
-    margin-bottom: 10px;
+    margin-bottom: 18px;
   }
 
   .contact-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 14px;
+    gap: 12px 20px;
     font-family: var(--font-family);
-    font-size: 10.5px;
-    line-height: 1.4;
+    font-size: 16px;
+    line-height: 1.5;
     color: var(--color-muted);
   }
 
@@ -217,12 +217,12 @@
 
   /* === SECTIONS === */
   .section {
-    margin-bottom: 18px;
+    margin-bottom: 34px;
   }
 
   .section-title {
     font-family: var(--font-family);
-    font-size: 12px;
+    font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -259,7 +259,7 @@
 
   .competency-tag {
     font-family: var(--font-family);
-    font-size: 10px;
+    font-size: 15px;
     font-weight: 500;
     color: var(--accent-text);
     background: var(--accent-soft-bg);
@@ -283,13 +283,13 @@
 
   .job-company {
     font-family: var(--font-family);
-    font-size: 12.5px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--secondary-color);
   }
 
   .job-period {
-    font-size: 10.5px;
+    font-size: 16px;
     color: var(--color-faint);
     white-space: nowrap;
   }
@@ -302,7 +302,7 @@
   }
 
   .job-location {
-    font-size: 10px;
+    font-size: 15px;
     color: var(--color-ghost);
   }
 
@@ -312,7 +312,7 @@
   }
 
   .job li {
-    font-size: 10.5px;
+    font-size: 16px;
     line-height: 1.6;
     color: var(--color-body);
     margin-bottom: 4px;
@@ -329,7 +329,7 @@
 
   .project-title {
     font-family: var(--font-family);
-    font-size: 11.5px;
+    font-size: 17px;
     font-weight: 600;
     color: var(--secondary-color);
   }
@@ -344,7 +344,7 @@
   }
 
   .project-badge {
-    font-size: 9px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--accent-color);
     background: var(--accent-soft-bg);
@@ -354,14 +354,14 @@
   }
 
   .project-desc {
-    font-size: 10.5px;
+    font-size: 16px;
     color: var(--color-body-2);
     margin-top: 3px;
     line-height: 1.55;
   }
 
   .project-tech {
-    font-size: 9.5px;
+    font-size: 15px;
     color: var(--color-ghost);
     margin-top: 3px;
   }
@@ -390,18 +390,18 @@
   }
 
   .edu-year {
-    font-size: 10px;
+    font-size: 15px;
     color: var(--color-faint);
     white-space: nowrap;
   }
 
   .edu-location {
-    font-size: 10px;
+    font-size: 15px;
     color: var(--color-ghost);
   }
 
   .edu-desc {
-    font-size: 10px;
+    font-size: 15px;
     color: var(--color-muted-2);
     margin-top: 2px;
     line-height: 1.5;
@@ -424,7 +424,7 @@
   }
 
   .cert-title {
-    font-size: 10.5px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--color-body);
   }
@@ -435,7 +435,7 @@
   }
 
   .cert-year {
-    font-size: 10px;
+    font-size: 15px;
     color: var(--color-faint);
     white-space: nowrap;
     text-align: right;
@@ -459,7 +459,7 @@
   }
 
   .award-title {
-    font-size: 10.5px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--color-body);
   }
@@ -470,7 +470,7 @@
   }
 
   .award-year {
-    font-size: 10px;
+    font-size: 15px;
     color: var(--color-faint);
     white-space: nowrap;
     text-align: right;
@@ -479,26 +479,27 @@
 
   /* === INTERESTS === */
   .interests-line {
-    font-size: 10.5px;
+    font-size: 16px;
     color: var(--color-body-2);
   }
 
   /* === SKILLS === */
   .skills-grid {
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px 14px;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .skill-item {
-    font-size: 10.5px;
+    font-size: 16px;
     color: var(--color-body-2);
   }
 
   .skill-category {
     font-weight: 600;
     color: var(--color-body);
-    font-size: 10.5px;
+    font-size: 16px;
+    white-space: nowrap;
   }
 
   /* === PRINT === */
@@ -727,7 +728,7 @@
   <!-- PROFESSIONAL SUMMARY -->
   <div class="section">
     <div class="section-title">Perfil profesional</div>
-    <div class="summary-text">Desarrollador Fullstack con más de 10 años construyendo APIs escalables y aplicaciones web de alto rendimiento. Especialista en <strong>NestJS</strong>, <strong>Express.js</strong> y <strong>React (Next.js)</strong>, con logros en integración de sistemas legados (AS400), cobertura de pruebas superior al 80% y liderazgo técnico como Subdirector de Desarrollo. Experiencia en equipos remotos cross-border y stack moderno con Docker, CI/CD, TypeScript y Tailwind CSS.</div>
+    <div class="summary-text">Desarrollador Fullstack con más de 10 años construyendo APIs escalables y aplicaciones web de alto rendimiento. Especialista en <strong>NestJS</strong>, <strong>Express.js</strong> y <strong>React (Next.js)</strong>. Logros en integración de sistemas legados (AS400), cobertura de pruebas superior al 80% y liderazgo técnico como Subdirector de Desarrollo. Experiencia en equipos remotos cross-border y stack moderno con Docker, CI/CD, TypeScript y Tailwind CSS.</div>
   </div>
 
   <!-- CORE COMPETENCIES -->
@@ -756,9 +757,9 @@
   <div class="job-role">Programador Full Stack</div>
   <div class="job-location">Bogotá, Colombia</div>
   <ul>
-    <li>Desarrollo y evolución de una plataforma corporativa con <strong>React</strong> y <strong>Next.js</strong>, incorporando módulos que mejoran la funcionalidad y la experiencia de usuario.</li>
-    <li>Desarrollo de APIs REST con <strong>Node.js</strong> y <strong>NestJS</strong> para integrar servicios, bases de datos <strong>AS400</strong> y APIs externas.</li>
-    <li>Contribución a la centralización de información crítica manteniendo estándares de rendimiento, escalabilidad y seguridad.</li>
+    <li>Desarrollé una plataforma corporativa con <strong>React</strong> y <strong>Next.js</strong>, añadiendo módulos que mejoran la experiencia de usuario.</li>
+    <li>Construí APIs REST con <strong>Node.js</strong> y <strong>NestJS</strong> para integrar servicios, bases de datos <strong>AS400</strong> y APIs externas.</li>
+    <li>Centralicé información crítica manteniendo estándares de rendimiento, escalabilidad y seguridad.</li>
   </ul>
 </div>
   <div class="job">
@@ -769,10 +770,12 @@
   <div class="job-role">Fullstack Developer Semi Senior</div>
   <div class="job-location">Chile - Remoto</div>
   <ul>
-    <li>Desarrollo de portales corporativos de alto tráfico con <strong>Next.js</strong>, optimizando el rendimiento mediante <strong>SSR/ISR</strong> y arquitectura de módulos reutilizables.</li>
-    <li>Diseño y construcción de APIs con <strong>NestJS</strong> para orquestación de servicios, con integración exitosa a sistemas legados <strong>AS400</strong>, proveedores externos y <strong>PostgreSQL</strong>.</li>
-    <li>Cobertura de pruebas unitarias e integración con <strong>Jest superior al 80%</strong>, reduciendo incidencias en producción.</li>
-    <li>Colaboración con diseño (Figma, <strong>Storybook</strong>) y maquetación responsiva con <strong>Tailwind CSS</strong>; estándares de seguridad y escalabilidad en Node.js.</li>
+    <li>Construí portales corporativos de alto tráfico con <strong>Next.js</strong>, optimizando el rendimiento mediante <strong>SSR/ISR</strong>.</li>
+    <li>Diseñé APIs robustas con <strong>NestJS</strong> para orquestar servicios, integrando sistemas legados <strong>AS400</strong>, proveedores externos y <strong>PostgreSQL</strong>.</li>
+    <li>Implementé estándares de seguridad y escalabilidad en arquitecturas basadas en Node.js.</li>
+    <li>Alcancé más del 80% de cobertura con <strong>Jest</strong> (unitarias e integración), reduciendo incidencias en producción.</li>
+    <li>Colaboré con el equipo de diseño usando Figma y <strong>Storybook</strong> para asegurar la consistencia del Design System.</li>
+    <li>Maqueté componentes responsivos con <strong>Tailwind CSS</strong> para asegurar la consistencia visual.</li>
   </ul>
 </div>
   <div class="job">
@@ -783,8 +786,8 @@
   <div class="job-role">Subdirector de Desarrollo</div>
   
   <ul>
-    <li>Coordinación operativa del equipo, planificación técnica, definición de prioridades y estimación de sprints bajo metodologías <strong>Agile (Scrum/Kanban)</strong>.</li>
-    <li>Mentoría de desarrolladores junior y promoción de buenas prácticas de ingeniería y mejora continua.</li>
+    <li>Coordiné la operación del equipo, la planificación técnica, las prioridades y la estimación de sprints (<strong>Scrum/Kanban</strong>).</li>
+    <li>Mentoricé desarrolladores junior y promoví buenas prácticas de ingeniería y mejora continua.</li>
   </ul>
 </div>
   <div class="job">
@@ -795,9 +798,11 @@
   <div class="job-role">Programador de Software</div>
   
   <ul>
-    <li>Diseño y desarrollo de APIs REST escalables con <strong>Node.js</strong> y <strong>Express.js</strong> para cotizadores masivos de seguros, soportando alta concurrencia.</li>
-    <li>Desarrollo de SPAs complejas con <strong>Angular</strong> y DevExtreme para visualización de datos en tiempo real.</li>
-    <li>Administración y optimización de bases de datos <strong>MySQL</strong> y <strong>Firebase Realtime Database</strong>; integración de servicios <strong>.NET</strong> para el procesamiento de datos.</li>
+    <li>Diseñé y desarrollé APIs REST escalables con <strong>Node.js</strong> y <strong>Express.js</strong> para cotizadores masivos de seguros, soportando alta concurrencia.</li>
+    <li>Implementé middlewares personalizados, enrutamiento modular y manejo de sesiones con Express.js, mejorando la mantenibilidad del código.</li>
+    <li>Construí SPAs complejas con <strong>Angular</strong> y DevExtreme para visualizar datos en tiempo real.</li>
+    <li>Administré y optimicé bases de datos <strong>MySQL</strong> y <strong>Firebase Realtime Database</strong>.</li>
+    <li>Integré servicios <strong>.NET</strong> para el procesamiento de datos entre APIs y hojas de cálculo empresariales.</li>
   </ul>
 </div>
   <div class="job">
@@ -808,7 +813,7 @@
   <div class="job-role">Desarrollador Web Fullstack</div>
   
   <ul>
-    <li>Desarrollo fullstack con PHP/Laravel para plataformas e-commerce (TuLlanta y LaRueda).</li>
+    <li>Desarrollé plataformas e-commerce con PHP/Laravel (TuLlanta y LaRueda), mejorando la experiencia de usuario y el flujo de pago.</li>
   </ul>
 </div>
   <div class="job">
@@ -819,7 +824,8 @@
   <div class="job-role">Ingeniero de Desarrollo</div>
   
   <ul>
-    <li>Migración de PHP Vanilla a Laravel y desarrollo del módulo de Facturación Electrónica con Angular.</li>
+    <li>Migré el stack técnico de PHP Vanilla a Laravel, estandarizando el desarrollo con patrones POO.</li>
+    <li>Desarrollé el módulo de Facturación Electrónica e integré APIs externas mediante Angular.</li>
   </ul>
 </div>
   <div class="job">
@@ -830,7 +836,9 @@
   <div class="job-role">Desarrollador Fullstack</div>
   
   <ul>
-    <li>Desarrollo de sitios web SEO responsivos, APIs REST con CakePHP y gestión de MySQL.</li>
+    <li>Maqueté sitios web SEO con diseño responsivo.</li>
+    <li>Mantuve aplicaciones en PHP con CakePHP y desarrollé servicios API REST.</li>
+    <li>Administré bases de datos en MySQL.</li>
   </ul>
 </div>
   <div class="job">
@@ -841,7 +849,7 @@
   <div class="job-role">Desarrollador de Software</div>
   
   <ul>
-    <li>Desarrollo de aplicaciones web con PHP, MySQL, JavaScript y consumo de APIs.</li>
+    <li>Desarrollé aplicaciones web con PHP, MySQL, JavaScript y consumo de APIs mediante CURL/XML.</li>
   </ul>
 </div>
   <div class="job">
@@ -852,7 +860,9 @@
   <div class="job-role">Desarrollador Junior</div>
   
   <ul>
-    <li>Aplicativos móviles híbridos con <strong>Ionic/Cordova</strong>, mantenimiento PHP con Symfony2 y MySQL.</li>
+    <li>Desarrollé aplicativos móviles híbridos con <strong>Ionic/Cordova</strong> y AngularJS.</li>
+    <li>Mantuve aplicaciones en PHP con Symfony2.</li>
+    <li>Administré bases de datos MySQL y configuré inventarios.</li>
   </ul>
 </div>
   <div class="job">
@@ -863,7 +873,8 @@
   <div class="job-role">Programador Junior</div>
   
   <ul>
-    <li>Maquetación web responsiva y mantenimiento PHP con Oracle.</li>
+    <li>Maqueté sitios web SEO con diseño responsivo.</li>
+    <li>Mantuve aplicaciones en PHP y administré bases de datos Oracle.</li>
   </ul>
 </div>
   </div>
